@@ -5,16 +5,28 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public PlayerInput playerInput;
-    Rigidbody playerRigidBody;
-    Animator animator;
+    private Rigidbody playerRigidBody;
+    private Animator animator;
+    private PlayerAttack playerAttack;
 
-    [SerializeField] float moveSpeed = 4f;
+    [SerializeField] 
+    float moveSpeed = 4f;
 
+    public delegate void CanMoveEvent();
+    public CanMoveEvent attackEndEvent;
 
     void Awake()
     {
         playerRigidBody = GetComponent<Rigidbody>();
+        playerAttack = GetComponent<PlayerAttack>();
         animator = GetComponent<Animator>();
+
+        attackEndEvent += SetOnWhenAttack;
+    }
+
+    private void Start() 
+    {
+        playerAttack.onAttack += SetOffWhenAttack;
     }
 
     // Update is called once per frame
@@ -66,6 +78,24 @@ public class PlayerMovement : MonoBehaviour
         }
         playerRigidBody.rotation = Quaternion.Euler(transform.rotation.x, rotate, transform.rotation.z);
     }
+
+    private void SetOffWhenAttack()
+    {
+        this.enabled = false;
+    }
+
+    private void SetOnWhenAttack()
+    {
+        this.enabled = true;
+    }
+
+    public void RaiseCanMove()
+    {
+        attackEndEvent?.Invoke();
+    }
+
+
+
 }
 
 

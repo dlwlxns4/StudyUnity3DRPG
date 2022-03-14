@@ -4,27 +4,109 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
+    private PlayerInput playerInput;
+    private Animator playerAnimator;
+    private int comboStep;
+    private bool isComboPossible;
 
-    PlayerInteract playerInteract;
+    public delegate void OnAttack();
+    public OnAttack onAttack;
+    private PlayerMovement playerMovement;
+    private Rigidbody playerRigidBody;
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        playerInteract = GetComponent<PlayerInteract>();
+        playerInput = GetComponent<PlayerInput>();
+        playerAnimator = GetComponent<Animator>();
+        playerMovement = GetComponent<PlayerMovement>();
+        playerRigidBody = GetComponent<Rigidbody>();
+
+        playerInput.attackInput = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        DoAttack();   
     }
 
-    void Attack()
+    private void DoAttack()
     {
-        if(playerInteract.interactState != PlayerInteract.InteractState.NONE)
+        if(playerInput.attackInput==true)
         {
-            return ;
+            if(comboStep==0)
+            {
+                playerAnimator.Play("AttackA");
+                AttackRebound();
+                OnRaiseAttack();
+                comboStep = 1;
+
+                return ;
+            }
+
+            if(comboStep !=0)
+            {
+                if(isComboPossible)
+                {
+                    isComboPossible = false;
+                    comboStep+=1;
+                }
+            }
         }
 
+    }
 
+    public void ComboPossible()
+    {
+        isComboPossible = true;
+    }
+
+    public void DoComboAttack()
+    {
+        switch(comboStep)
+        {
+            case 2:
+                playerAnimator.Play("AttackB");
+                break;
+            case 3:
+                playerAnimator.Play("AttackC");
+                break;
+            case 4:
+                playerAnimator.Play("AttackD");
+                break;
+            case 5:
+                playerAnimator.Play("AttackE");
+                break;
+            case 6:
+                playerAnimator.Play("AttackToStand");
+                break;
+
+        }
+    }
+
+    private void OnRaiseAttack()
+    {
+        onAttack?.Invoke();
+    }
+
+    public void ComboReset()
+    {
+        playerMovement.RaiseCanMove();
+        isComboPossible = false;
+        comboStep = 0;
+    }
+
+    public void ResetOnlyComboStepAndComboPossible()
+    {
+        isComboPossible = false;
+        comboStep = 0;
+    }
+
+    public void AttackRebound()
+    {
+        Vector3 forward = transform.forward*3;
+        Debug.Log(forward);
+        playerRigidBody.velocity += forward;
     }
 }

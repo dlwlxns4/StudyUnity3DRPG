@@ -24,7 +24,8 @@ public class Quest : ScriptableObject
         public int exp;
     }
 
-    [Header("Reward")] public Stat reward = new Stat{currency=10, exp=10};
+    [Header("Reward")] 
+    public Stat reward = new Stat{currency=10, exp=10};
 
 
     public abstract class QuestGoal : ScriptableObject
