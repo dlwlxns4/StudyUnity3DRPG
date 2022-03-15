@@ -38,7 +38,6 @@ public class PlayerAttack : MonoBehaviour
             if(comboStep==0)
             {
                 playerAnimator.Play("AttackA");
-                AttackRebound();
                 OnRaiseAttack();
                 comboStep = 1;
 
@@ -57,13 +56,10 @@ public class PlayerAttack : MonoBehaviour
 
     }
 
-    public void ComboPossible()
-    {
-        isComboPossible = true;
-    }
 
     public void DoComboAttack()
     {
+        bool isAttack = true;
         switch(comboStep)
         {
             case 2:
@@ -81,8 +77,20 @@ public class PlayerAttack : MonoBehaviour
             case 6:
                 playerAnimator.Play("AttackToStand");
                 break;
-
+            default:
+                isAttack=false;
+                break;
         }
+
+        if(isAttack)
+        {
+            AttackReboundReset();
+        }
+    }
+    public void ComboPossible()
+    {
+        isComboPossible = true;
+        AttackRebound();
     }
 
     private void OnRaiseAttack()
@@ -95,6 +103,7 @@ public class PlayerAttack : MonoBehaviour
         playerMovement.RaiseCanMove();
         isComboPossible = false;
         comboStep = 0;
+        AttackReboundReset();
     }
 
     public void ResetOnlyComboStepAndComboPossible()
@@ -105,8 +114,12 @@ public class PlayerAttack : MonoBehaviour
 
     public void AttackRebound()
     {
-        Vector3 forward = transform.forward*3;
-        Debug.Log(forward);
+        Vector3 forward = transform.forward*0.5f;
         playerRigidBody.velocity += forward;
+    }
+    
+    private void AttackReboundReset()
+    {
+        playerRigidBody.velocity = Vector3.zero;
     }
 }
