@@ -60,6 +60,8 @@ public class PlayerMovement : MonoBehaviour
         //None KeyInput
         if(xInput==0 && yInput==0)
         {
+            Vector3 newVelocity = new Vector3(0f, playerRigidBody.velocity.y, 0f);
+            playerRigidBody.velocity = newVelocity;
             return ;
         }
 

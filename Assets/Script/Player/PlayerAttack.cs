@@ -114,7 +114,7 @@ public class PlayerAttack : MonoBehaviour
 
     public void AttackRebound()
     {
-        Vector3 forward = transform.forward*0.5f;
+        Vector3 forward = transform.forward*0.3f;
         playerRigidBody.velocity += forward;
     }
     

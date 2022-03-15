@@ -19,7 +19,7 @@ public class ChoiceDialogueNode : DialogueNode
 {
     [SerializeField]
     private DialogueChoice[] canChoiceNodes;
-    private DialogueChoice[] CanChoiceNodes => canChoiceNodes;
+    public DialogueChoice[] CanChoiceNodes => canChoiceNodes;
 
     public override bool CanBeFollowedByNode(DialogueNode node)
     {

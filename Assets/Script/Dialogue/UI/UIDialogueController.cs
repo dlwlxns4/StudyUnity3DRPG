@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class UIDialogueController : MonoBehaviour, DialogueNodeVisitor
 {
@@ -15,20 +16,63 @@ public class UIDialogueController : MonoBehaviour, DialogueNodeVisitor
 
     private DialogueNode nextNode = null;
     private bool listenToInput = false;
+    [SerializeField]
+    private RectTransform choiceBoxTransform;
+
+    [SerializeField]
+    private UIDialogueChoiceController choiceControllerPrefab;
+
+    [SerializeField]
+    private List<GameObject> choiceNodeList;
+
+    private int currSelectNode=-1;
 
     void Awake()
     {
-        gameObject.SetActive(false);
         dialogueChannel.OnDialogueNodeStart += OnDialogueNodeStart;
         dialogueChannel.OnDialogueNodeEnd += OnDialogueNodeEnd;
+        gameObject.SetActive(false);
+        choiceBoxTransform.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(listenToInput && Input.GetKeyDown(KeyCode.Space))
+        if(listenToInput==false)
         {
-            dialogueChannel.RaiseRequestDialogueNode(nextNode);
+            return ;
+        }
+
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            if(currSelectNode == -1)
+            {
+                dialogueChannel.RaiseRequestDialogueNode(nextNode);
+            }
+            else
+            {
+                choiceNodeList[currSelectNode].GetComponent<UIDialogueChoiceController>().OnClick();
+            }
+        }
+
+        if(Input.GetKeyDown(KeyCode.UpArrow))
+        {
+                Debug.Log("asd ");
+            if(currSelectNode > 0)
+            {
+                choiceNodeList[currSelectNode].GetComponent<SelectImage>().GetSelectImage.SetActive(false);
+                currSelectNode--;
+                choiceNodeList[currSelectNode].GetComponent<SelectImage>().GetSelectImage.SetActive(true);
+            }
+        }
+        else if(Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            if(currSelectNode < choiceNodeList.Count-1)
+            {
+                choiceNodeList[currSelectNode].GetComponent<SelectImage>().GetSelectImage.SetActive(false);
+                currSelectNode++;
+                choiceNodeList[currSelectNode].GetComponent<SelectImage>().GetSelectImage.SetActive(true);
+            }
         }
     }
 
@@ -49,7 +93,15 @@ public class UIDialogueController : MonoBehaviour, DialogueNodeVisitor
         dialogueText.text="";
         speakerText.text="";
 
+        foreach (Transform child in choiceBoxTransform)
+        {
+            Destroy(child.gameObject);
+        }
+
         gameObject.SetActive(false);
+        choiceBoxTransform.gameObject.SetActive(false);
+        currSelectNode=-1;
+        choiceNodeList.Clear();
     }
 
     public void Visit(BasicDialogueNode node)
@@ -60,6 +112,17 @@ public class UIDialogueController : MonoBehaviour, DialogueNodeVisitor
 
     public void Visit(ChoiceDialogueNode node)
     {
-        
+        choiceBoxTransform.gameObject.SetActive(true);
+        listenToInput=true;
+
+        foreach(DialogueChoice choice in node.CanChoiceNodes)
+        {
+            UIDialogueChoiceController newChoice = Instantiate(choiceControllerPrefab, choiceBoxTransform);
+            newChoice.choice = choice;
+            choiceNodeList.Add(newChoice.gameObject);
+        }
+
+        currSelectNode=0;
+        choiceNodeList[currSelectNode].GetComponent<SelectImage>().GetSelectImage.SetActive(true);
     }
 }
