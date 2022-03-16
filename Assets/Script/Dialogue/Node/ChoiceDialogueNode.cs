@@ -1,5 +1,6 @@
 using System.Linq;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
@@ -20,6 +21,7 @@ public class ChoiceDialogueNode : DialogueNode
     [SerializeField]
     private DialogueChoice[] canChoiceNodes;
     public DialogueChoice[] CanChoiceNodes => canChoiceNodes;
+    
 
     public override bool CanBeFollowedByNode(DialogueNode node)
     {

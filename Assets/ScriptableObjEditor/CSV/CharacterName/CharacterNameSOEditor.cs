@@ -3,7 +3,6 @@ using UnityEditor;
 using System.IO;
 
 
-[CreateAssetMenu(fileName ="CharacterName", menuName = "ScriptableObjects/Narration")]
 public class CharacterNameSOEditor
 {
     private static string CSVPath = "Assets/ScriptableObjEditor/CSV/CharacterName/CharacterNames.csv";

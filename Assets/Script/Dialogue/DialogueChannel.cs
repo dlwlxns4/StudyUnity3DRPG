@@ -44,5 +44,4 @@ public class DialogueChannel : ScriptableObject
     {
         OnDialogueNodeEnd?.Invoke(node);
     }
-
 }

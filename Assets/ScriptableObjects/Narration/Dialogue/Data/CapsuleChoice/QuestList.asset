@@ -9,8 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab7191b7dd238f74486fae579fff8742, type: 3}
+  m_Script: {fileID: 11500000, guid: 36ba3e805fc2b9e4097f4e012532ceb5, type: 3}
   m_Name: QuestList
   m_EditorClassIdentifier: 
   dialogueLine: {fileID: 11400000, guid: b817dd1ae677735418ef8171df02934e, type: 2}
-  nextNode: {fileID: 0}
+  canChoiceNodes:
+  - choicePreview: "\uCDE8\uC18C"
+    choiceNode: {fileID: 0}

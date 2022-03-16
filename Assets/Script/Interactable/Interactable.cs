@@ -11,5 +11,4 @@ public class Interactable : MonoBehaviour
         Debug.Log(this.gameObject.name + " 과 상호작용!");
         OnInteraction.Invoke();
     }
-
 }

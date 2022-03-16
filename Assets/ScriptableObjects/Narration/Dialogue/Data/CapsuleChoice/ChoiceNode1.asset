@@ -17,4 +17,4 @@ MonoBehaviour:
   - choicePreview: "\uB300\uD654\uD558\uAE30"
     choiceNode: {fileID: 11400000, guid: 7d89751a782f3de40bac3fa20947fda3, type: 2}
   - choicePreview: "\uD018\uC2A4\uD2B8"
-    choiceNode: {fileID: 11400000, guid: 7af5a1907b340a344a3c0cd82ad51ec8, type: 2}
+    choiceNode: {fileID: 11400000, guid: 586d4cb84967cef4290c18eed4679cd8, type: 2}

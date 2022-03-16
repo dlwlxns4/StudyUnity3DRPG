@@ -57,7 +57,6 @@ public class UIDialogueController : MonoBehaviour, DialogueNodeVisitor
 
         if(Input.GetKeyDown(KeyCode.UpArrow))
         {
-                Debug.Log("asd ");
             if(currSelectNode > 0)
             {
                 choiceNodeList[currSelectNode].GetComponent<SelectImage>().GetSelectImage.SetActive(false);
@@ -124,5 +123,11 @@ public class UIDialogueController : MonoBehaviour, DialogueNodeVisitor
 
         currSelectNode=0;
         choiceNodeList[currSelectNode].GetComponent<SelectImage>().GetSelectImage.SetActive(true);
+    }
+
+    public void Visit(QuestDialogueNode node)
+    {
+        listenToInput=true;
+        nextNode = node.NextNode;
     }
 }

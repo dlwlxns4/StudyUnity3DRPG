@@ -28,10 +28,8 @@ public class SceneEffect : MonoBehaviour
 
     IEnumerator FadeToggleScreen()
     {
-        Debug.Log("FadeOut!!");
         while(fadeInOutImage.color.a <=1f)
         {
-            Debug.Log(imageColor.a);
             imageColor.a += 0.1f;
             fadeInOutImage.color = imageColor;
             yield return new WaitForSeconds(0.1f);
