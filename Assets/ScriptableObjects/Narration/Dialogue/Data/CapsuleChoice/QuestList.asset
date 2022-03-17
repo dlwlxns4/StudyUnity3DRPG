@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueLine: {fileID: 11400000, guid: b817dd1ae677735418ef8171df02934e, type: 2}
   canChoiceNodes:
-  - choicePreview: "\uCDE8\uC18C"
+  - choicePreview: "\uBC84\uC12F \uC18C\uD0D5\uC758\uB8B0"
+    choiceNode: {fileID: 11400000, guid: a63c2a687985f924eb0763fc772ba531, type: 2}
+  - choicePreview: "\uB3CC\uC544\uAC00\uAE30"
     choiceNode: {fileID: 0}

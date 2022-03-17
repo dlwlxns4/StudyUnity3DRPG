@@ -9,18 +9,39 @@ public class DialogueChoice
     [SerializeField]
     private string choicePreview;
     [SerializeField]
-    private DialogueNode choiceNode;
+    public DialogueNode choiceNode;
+    [SerializeField]
 
-    public string ChoicePreview => choicePreview;
-    public DialogueNode ChoiceNode => choiceNode;
+    public string ChoicePreview
+    {
+        get
+        {
+            return choicePreview;
+        }
+        set
+        {
+            choicePreview = value;
+        }
+    }
+    public DialogueNode ChoiceNode 
+    {
+        get
+        {
+            return choiceNode;
+        }
+        set
+        {
+            choiceNode = value;
+        }
+    }
 }
 
 [CreateAssetMenu(menuName = "ScriptableObjects/Narration/Dialogue/Node/Choice")]
 public class ChoiceDialogueNode : DialogueNode
 {
     [SerializeField]
-    private DialogueChoice[] canChoiceNodes;
-    public DialogueChoice[] CanChoiceNodes => canChoiceNodes;
+    private List<DialogueChoice> canChoiceNodes;
+    public List<DialogueChoice> CanChoiceNodes => canChoiceNodes;
     
 
     public override bool CanBeFollowedByNode(DialogueNode node)

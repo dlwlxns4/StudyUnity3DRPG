@@ -5,9 +5,9 @@ using UnityEngine;
 public class QuestManager : MonoBehaviour
 {
     private static QuestManager instance;
-    public QuestManager Instace => instance;
+    public static QuestManager Instace => instance;
 
-
+    public int latestInteractObjectID;
 
     [SerializeField]
     private List<QuestObject> questObjectList;
@@ -19,8 +19,11 @@ public class QuestManager : MonoBehaviour
     }
 
 
-    public QuestDialogueNode FindQuest(int id)
+    public List<QuestObject> FindQuest(int id)
     {   
-       return questObjectList.Find(x => x.QuestID == id).DialogueNode;
+        List<QuestObject> questObjList = new List<QuestObject>();
+        questObjList = questObjectList.FindAll(x => x.QuestID == id);
+
+        return questObjectList;
     } 
 }

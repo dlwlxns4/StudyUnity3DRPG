@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 using System.Collections.Generic;
 
 public class UIDialogueController : MonoBehaviour, DialogueNodeVisitor
@@ -27,6 +28,7 @@ public class UIDialogueController : MonoBehaviour, DialogueNodeVisitor
 
     private int currSelectNode=-1;
 
+    const string isQuest = "퀘스트";
     void Awake()
     {
         dialogueChannel.OnDialogueNodeStart += OnDialogueNodeStart;
@@ -113,6 +115,10 @@ public class UIDialogueController : MonoBehaviour, DialogueNodeVisitor
     {
         choiceBoxTransform.gameObject.SetActive(true);
         listenToInput=true;
+    
+        
+            
+        FindQuest(1, node);
 
         foreach(DialogueChoice choice in node.CanChoiceNodes)
         {
@@ -129,5 +135,28 @@ public class UIDialogueController : MonoBehaviour, DialogueNodeVisitor
     {
         listenToInput=true;
         nextNode = node.NextNode;
+    }
+
+    private void FindQuest(int id, ChoiceDialogueNode node)
+    {
+        if(node.CanChoiceNodes.Any(x => x.ChoicePreview == isQuest))
+        {
+            Debug.Log("Asd");
+            List<QuestObject> questObjects = QuestManager.Instace.FindQuest(1);
+
+            ((ChoiceDialogueNode)node.CanChoiceNodes.Find(x=>x.ChoicePreview == isQuest).ChoiceNode).CanChoiceNodes.Clear();
+
+            foreach(var quest in questObjects)
+            {
+                DialogueChoice choice = new DialogueChoice();
+                choice.ChoicePreview = quest.QuestName;
+                choice.ChoiceNode = quest.DialogueNode;
+                ((ChoiceDialogueNode)node.CanChoiceNodes.Find(x=>x.ChoicePreview == isQuest).ChoiceNode).CanChoiceNodes.Insert(0,choice);
+            }
+            DialogueChoice back = new DialogueChoice();
+            back.ChoicePreview = "돌아가기";
+            back.ChoiceNode = null;
+            ((ChoiceDialogueNode)node.CanChoiceNodes.Find(x=>x.ChoicePreview == isQuest).ChoiceNode).CanChoiceNodes.Add(back);
+        }
     }
 }
