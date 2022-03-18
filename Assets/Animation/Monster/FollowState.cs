@@ -6,13 +6,15 @@ public class FollowState : StateMachineBehaviour
 {
     Transform enemyTransform;
     Enemy enemy;
+    BoxCollider collider;
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
        enemyTransform = animator.GetComponent<Transform>();
        enemy = animator.GetComponent<Enemy>();
+       collider = animator.GetComponent<BoxCollider>();
     }
 
-    override public async void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         enemyTransform.position = Vector3.MoveTowards(enemyTransform.position, enemy.GetTargetTransform().position, Time.deltaTime * 1f);
         enemyTransform.rotation = Quaternion.Lerp(enemyTransform.rotation, Quaternion.LookRotation(enemy.GetTargetTransform().position - enemyTransform.position), Time.deltaTime * 5f);

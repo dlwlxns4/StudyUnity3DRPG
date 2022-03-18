@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LivingEntity : MonoBehaviour
+public abstract class LivingEntity : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public int maxHp{get;set;}
+    public int remainHp{get;set;}
+    public int strength{get;set;}
+    public bool isDead{get;set;}
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public abstract void OnDamaged(int damagedFigure);
+
+    public abstract void Die();
+
+    public abstract void DoAttack();
 }

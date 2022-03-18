@@ -14,6 +14,9 @@ public class PlayerAttack : MonoBehaviour
     private PlayerMovement playerMovement;
     private Rigidbody playerRigidBody;
 
+    [SerializeField]
+    private BoxCollider weaponCollider;
+
     // Start is called before the first frame update
     void Awake()
     {
