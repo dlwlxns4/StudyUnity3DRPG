@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -14,8 +15,8 @@ public class PlayerAttack : MonoBehaviour
     private PlayerMovement playerMovement;
     private Rigidbody playerRigidBody;
 
-    [SerializeField]
-    private BoxCollider weaponCollider;
+    private WeaponColliision weaponColliision;
+
 
     // Start is called before the first frame update
     void Awake()
@@ -24,6 +25,7 @@ public class PlayerAttack : MonoBehaviour
         playerAnimator = GetComponent<Animator>();
         playerMovement = GetComponent<PlayerMovement>();
         playerRigidBody = GetComponent<Rigidbody>();
+        weaponColliision = GetComponentInChildren<WeaponColliision>();
 
         playerInput.attackInput = false;
     }
@@ -43,7 +45,7 @@ public class PlayerAttack : MonoBehaviour
                 playerAnimator.Play("AttackA");
                 OnRaiseAttack();
                 comboStep = 1;
-
+                weaponColliision.CanDamage = true;
                 return ;
             }
 
@@ -106,6 +108,8 @@ public class PlayerAttack : MonoBehaviour
         playerMovement.RaiseCanMove();
         isComboPossible = false;
         comboStep = 0;
+        weaponColliision.CanDamage = false;
+
         AttackReboundReset();
     }
 

@@ -6,12 +6,10 @@ public class FollowState : StateMachineBehaviour
 {
     Transform enemyTransform;
     Enemy enemy;
-    BoxCollider collider;
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
        enemyTransform = animator.GetComponent<Transform>();
        enemy = animator.GetComponent<Enemy>();
-       collider = animator.GetComponent<BoxCollider>();
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -21,6 +19,13 @@ public class FollowState : StateMachineBehaviour
         if(Vector3.Distance(enemyTransform.position, enemy.GetTargetTransform().position) > 4f )
         {
             animator.SetBool("IsBack", true);
+            animator.SetBool("IsFollow",false);
+        }
+
+        if(Vector3.Distance(enemyTransform.position, enemy.GetTargetTransform().position) < 1f )
+        {
+            animator.SetBool("IsReady", true);
+            animator.SetBool("IsFollow",false);
         }
     }
 

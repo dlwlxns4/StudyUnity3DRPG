@@ -5,22 +5,19 @@ using UnityEngine;
 public class WeaponColliision : MonoBehaviour
 {
     public bool CanDamage{get;set;}
-    int damageFigure=5;
+    private int damageFigure=5;
+    private PlayerAttack playerAttack; 
 
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private void OnTriggerEnter(Collider other) 
     {
+        if(CanDamage == false)
+            return;
+
         if(other.tag == "Enemy")
         {
             other.GetComponent<LivingEntity>()?.OnDamaged(damageFigure);

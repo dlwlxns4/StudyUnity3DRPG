@@ -10,6 +10,7 @@ public class Mushroom : LivingEntity
     {
         maxHp=10;
         remainHp=10;
+        monsterName = "머쉬룸";
         animator = GetComponent<Animator>();
         isDead=false;
     }
@@ -27,6 +28,7 @@ public class Mushroom : LivingEntity
 
         remainHp -= damagedFigure;
         animator.SetBool("IsDamaged", true);
+        uiChannel.RaiseSetMonsterState(remainHp, monsterName);
         if(remainHp <= 0 )
         {
             Die();
@@ -36,20 +38,15 @@ public class Mushroom : LivingEntity
     public override void Die()
     {
         animator.SetBool("IsDamaged", false);
-        animator.SetBool("IsDie", true);
         animator.SetBool("IsFollow",false);
+        animator.SetBool("IsDie", true);
         isDead=true;
         StartCoroutine(DieEffect());
+        this.GetComponent<BoxCollider>().enabled = false;
     }
 
     public override void DoAttack()
     {
         return ;
-    }
-
-    IEnumerator DieEffect()
-    {
-        yield return new WaitForSeconds(3f);
-        gameObject.SetActive(false);
     }
 }
