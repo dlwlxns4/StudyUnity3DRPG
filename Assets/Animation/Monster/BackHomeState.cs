@@ -15,6 +15,7 @@ public class BackHomeState : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         enemyTransform.position = Vector3.MoveTowards(enemyTransform.position, enemy.GetBornedPosition(), Time.deltaTime *2f);
+        enemyTransform.rotation = Quaternion.Lerp(enemyTransform.rotation, Quaternion.LookRotation(enemy.GetBornedPosition() - enemyTransform.position), Time.deltaTime * 5f);
 
         if(Vector3.Distance(enemyTransform.position, enemy.GetTargetTransform().position) <= 4f )
         {
