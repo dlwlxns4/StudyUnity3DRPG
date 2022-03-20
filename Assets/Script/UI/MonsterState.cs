@@ -44,7 +44,7 @@ public class MonsterState : MonoBehaviour
     IEnumerator FadeOutPanel()
     {
         isDamaged=false;
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
 
         if(isDamaged==false)
         {

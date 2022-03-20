@@ -8,11 +8,11 @@ public class Mushroom : LivingEntity
 
     void Start()
     {
-        maxHp=10;
-        remainHp=10;
-        monsterName = "머쉬룸";
+        MaxHp=30;
+        RemainHp=30;
+        MonsterName = "머쉬룸";
         animator = GetComponent<Animator>();
-        isDead=false;
+        IsDead=false;
     }
 
     // Update is called once per frame
@@ -23,13 +23,13 @@ public class Mushroom : LivingEntity
 
     public override void OnDamaged(int damagedFigure)
     {
-        if(isDead)
+        if(IsDead)
             return;
 
-        remainHp -= damagedFigure;
+        RemainHp -= damagedFigure;
         animator.SetBool("IsDamaged", true);
-        uiChannel.RaiseSetMonsterState(remainHp, monsterName);
-        if(remainHp <= 0 )
+        uiChannel.RaiseSetMonsterState(RemainHp, MonsterName);
+        if(RemainHp <= 0 )
         {
             Die();
         }
@@ -40,9 +40,10 @@ public class Mushroom : LivingEntity
         animator.SetBool("IsDamaged", false);
         animator.SetBool("IsFollow",false);
         animator.SetBool("IsDie", true);
-        isDead=true;
+        IsDead=true;
         StartCoroutine(DieEffect());
         this.GetComponent<BoxCollider>().enabled = false;
+        CombatChannel.RaiseEnemyDiedEvent(this);
     }
 
     public override void DoAttack()

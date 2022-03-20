@@ -81,7 +81,9 @@ public class UIDialogueController : MonoBehaviour, DialogueNodeVisitor
     {
         gameObject.SetActive(true);
 
-        dialogueText.text = node.DialogueLine.Text;
+        string textString = node.DialogueLine.Text;
+        textString = textString.Replace("\\n", "\n");
+        dialogueText.text = textString;
         speakerText.text = node.DialogueLine.Speaker.characterName;
 
         node.Accept(this);
@@ -134,6 +136,7 @@ public class UIDialogueController : MonoBehaviour, DialogueNodeVisitor
     public void Visit(QuestDialogueNode node)
     {
         listenToInput=true;
+
         nextNode = node.NextNode;
     }
 

@@ -4,11 +4,12 @@ using UnityEngine;
 
 public abstract class LivingEntity : MonoBehaviour
 {
-    public int maxHp{get;set;}
-    public int remainHp{get;set;}
-    public int strength{get;set;}
-    public bool isDead{get;set;}
-    public string monsterName{get;set;}
+    public int MaxHp{get;set;}
+    public int RemainHp{get;set;}
+    public int Strength{get;set;}
+    public bool IsDead{get;set;}
+    public string MonsterName{get;set;}
+    public int ObjectId{get;set;}
     [SerializeField]
     protected UIChannel uiChannel;
 

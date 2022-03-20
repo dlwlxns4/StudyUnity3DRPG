@@ -7,10 +7,13 @@ public class QuestManager : MonoBehaviour
     private static QuestManager instance;
     public static QuestManager Instace => instance;
 
-    public int latestInteractObjectID;
+    private int latestInteractObjectID{get;set;}
 
     [SerializeField]
     private List<QuestObject> questObjectList;
+    
+    [SerializeField]
+    private List<Quest> acceptQuestList = new List<Quest>();
 
 
     void Awake() 

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Tuto_Narration1
   m_EditorClassIdentifier: 
   speaker: {fileID: 11400000, guid: e588749590f098a4eb356a2e8699ade8, type: 2}
-  text: "\uBB50\uC57C!"
+  text: "\uC548\uB155? \uB108\uAC00 \uADF8 \uD574\uACB0\uC0AC\uC57C??"
