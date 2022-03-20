@@ -1,4 +1,4 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,8 +6,7 @@ public class QuestManager : MonoBehaviour
 {
     private static QuestManager instance;
     public static QuestManager Instace => instance;
-
-    private int latestInteractObjectID{get;set;}
+    public int latestInteractObjectID{get;set;}
 
 
     [SerializeField]
@@ -19,6 +18,7 @@ public class QuestManager : MonoBehaviour
     [SerializeField]
     private UIChannel uiChannel;
 
+    public string latestSelectQuestName{get;set;}
 
     void Awake() 
     {
@@ -26,22 +26,25 @@ public class QuestManager : MonoBehaviour
     }
 
 
-    public List<QuestObject> FindQuest(int id)
+    public List<QuestObject> FindQuest()
     {   
         List<QuestObject> questObjList = new List<QuestObject>();
-        questObjList = questObjectList.FindAll(x => x.QuestID == id);
+        questObjList = questObjectList.FindAll(x => x.QuestID == latestInteractObjectID);
 
         return questObjectList;
     } 
 
     public void AcceptQuest()
     {
-        Quest quest = new MushroomHunter();
-        quest.Init();
-        acceptQuestList.Add(quest);
-        Debug.Log("퀘스트 이름" + $" {quest.QuestName}");
-        uiChannel.RaiseSetQuestOnUI(quest.QuestName);
+        QuestObject questObj = questObjectList.Find(x=>x.QuestName == latestSelectQuestName);
+        string questClass = questObj.QuestClassName;
+        Type type = Type.GetType(questClass);
+        Quest obj = Activator.CreateInstance(type) as Quest;
+        obj.Init();
+
+        acceptQuestList.Add(obj);
+        Debug.Log("퀘스트 이름" + $" {obj.QuestName}");
+        questObj.isAccept=true;
+        uiChannel.RaiseSetQuestOnUI(obj.QuestName);
     }
-
-
 }

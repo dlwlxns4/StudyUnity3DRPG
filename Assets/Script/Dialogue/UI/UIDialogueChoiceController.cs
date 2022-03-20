@@ -27,5 +27,6 @@ public class UIDialogueChoiceController : MonoBehaviour
     public void OnClick()
     {
         dialogueChannel.RaiseRequestDialogueNode(choiceNextNdoe);   
+        QuestManager.Instace.latestSelectQuestName = choiceNode.text;
     }
 }

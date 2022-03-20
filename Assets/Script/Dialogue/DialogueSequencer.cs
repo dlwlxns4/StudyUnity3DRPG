@@ -33,7 +33,6 @@ public class DialogueSequencer
     {
         if(CanStartNode(node))
         {
-
             StopDialogueNode(currentNode);
             currentNode = node;
 

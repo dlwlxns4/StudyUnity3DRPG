@@ -143,7 +143,7 @@ public class UIDialogueController : MonoBehaviour, DialogueNodeVisitor
     {
         if(node.CanChoiceNodes.Any(x => x.ChoicePreview == isQuest))
         {
-            List<QuestObject> questObjects = QuestManager.Instace.FindQuest(1);
+            List<QuestObject> questObjects = QuestManager.Instace.FindQuest();
 
             ((ChoiceDialogueNode)node.CanChoiceNodes.Find(x=>x.ChoicePreview == isQuest).ChoiceNode).CanChoiceNodes.Clear();
 
