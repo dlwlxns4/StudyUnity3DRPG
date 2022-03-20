@@ -40,7 +40,6 @@ public class DialogueSequencer
             if(currentNode != null)
             {
                 OnDialogueNodeStart?.Invoke(currentNode);
-                Debug.Log(currentNode.DialogueLine.Text);
             }
             else
             {

@@ -16,6 +16,7 @@ public class FollowState : StateMachineBehaviour
     {
         enemyTransform.position = Vector3.MoveTowards(enemyTransform.position, enemy.GetTargetTransform().position, Time.deltaTime * 1f);
         enemyTransform.rotation = Quaternion.Lerp(enemyTransform.rotation, Quaternion.LookRotation(enemy.GetTargetTransform().position - enemyTransform.position), Time.deltaTime * 5f);
+        
         if(Vector3.Distance(enemyTransform.position, enemy.GetTargetTransform().position) > 4f )
         {
             animator.SetBool("IsBack", true);

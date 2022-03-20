@@ -11,6 +11,7 @@ public class Mushroom : LivingEntity
         MaxHp=30;
         RemainHp=30;
         MonsterName = "머쉬룸";
+        ObjectId=1;
         animator = GetComponent<Animator>();
         IsDead=false;
     }
@@ -43,7 +44,7 @@ public class Mushroom : LivingEntity
         IsDead=true;
         StartCoroutine(DieEffect());
         this.GetComponent<BoxCollider>().enabled = false;
-        CombatChannel.RaiseEnemyDiedEvent(this);
+        base.Die();
     }
 
     public override void DoAttack()

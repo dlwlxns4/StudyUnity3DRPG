@@ -9,16 +9,20 @@ public class QuestManager : MonoBehaviour
 
     private int latestInteractObjectID{get;set;}
 
+
     [SerializeField]
-    private List<QuestObject> questObjectList;
+    private List<QuestObject> questObjectList = new List<QuestObject>();
     
     [SerializeField]
     private List<Quest> acceptQuestList = new List<Quest>();
 
+    [SerializeField]
+    private UIChannel uiChannel;
+
 
     void Awake() 
     {
-        instance = this;    
+        instance = this; 
     }
 
 
@@ -29,4 +33,15 @@ public class QuestManager : MonoBehaviour
 
         return questObjectList;
     } 
+
+    public void AcceptQuest()
+    {
+        Quest quest = new MushroomHunter();
+        quest.Init();
+        acceptQuestList.Add(quest);
+        Debug.Log("퀘스트 이름" + $" {quest.QuestName}");
+        uiChannel.RaiseSetQuestOnUI(quest.QuestName);
+    }
+
+
 }

@@ -18,15 +18,16 @@ public class KillGoal : QuestGoal
     public override void Init()
     {
         base.Init();
+        Debug.Log("!!");
         CombatChannel.OnEnemyDiedEvent += EnemyDied;
     }
 
     void EnemyDied(LivingEntity enemy)
     {
-        Debug.Log("!!꺄륵");
         if(enemy.ObjectId == this.EnemyID)
         {
             this.CurrentAmount++;
+            Debug.Log($"{CurrentAmount} / {RequiredAmount}");
             Evalutate();
         }
     }

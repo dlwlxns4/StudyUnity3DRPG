@@ -17,5 +17,6 @@ public class QuestDialogueNode : DialogueNode
     public override void Accept(DialogueNodeVisitor visitor)
     {
         visitor.Visit(this);
+        QuestManager.Instace.AcceptQuest();
     }
 }

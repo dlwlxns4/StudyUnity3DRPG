@@ -15,6 +15,10 @@ public class PlayerInteract : MonoBehaviour
     int npcCount;
 
     PlayerMovement playerMovement;
+    [SerializeField]
+    private GameObject questPanel;
+    [SerializeField]
+    private UIChannel uichannel;
 
     void Start()
     {
@@ -26,6 +30,7 @@ public class PlayerInteract : MonoBehaviour
     void Update()
     {
         InteractNPC();
+        SetOnQuestPanel();
     }
     
     private void OnTriggerEnter(Collider other)
@@ -61,6 +66,21 @@ public class PlayerInteract : MonoBehaviour
                 return ;
             }
             nearByInteractableObj[0].DoInteraction();
+        }
+    }
+
+    void SetOnQuestPanel()
+    {
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            if(questPanel.activeSelf == false)
+            {
+                questPanel.SetActive(true);
+            }
+            else
+            {
+                questPanel.SetActive(false);
+            }
         }
     }
 }

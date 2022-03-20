@@ -21,7 +21,6 @@ public class WeaponColliision : MonoBehaviour
         if(other.tag == "Enemy")
         {
             other.GetComponent<LivingEntity>()?.OnDamaged(damageFigure);
-            Debug.Log("공격!");
         }    
     }
 

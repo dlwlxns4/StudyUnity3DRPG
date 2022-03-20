@@ -119,7 +119,6 @@ public class UIDialogueController : MonoBehaviour, DialogueNodeVisitor
         listenToInput=true;
     
         
-            
         FindQuest(1, node);
 
         foreach(DialogueChoice choice in node.CanChoiceNodes)
@@ -144,7 +143,6 @@ public class UIDialogueController : MonoBehaviour, DialogueNodeVisitor
     {
         if(node.CanChoiceNodes.Any(x => x.ChoicePreview == isQuest))
         {
-            Debug.Log("Asd");
             List<QuestObject> questObjects = QuestManager.Instace.FindQuest(1);
 
             ((ChoiceDialogueNode)node.CanChoiceNodes.Find(x=>x.ChoicePreview == isQuest).ChoiceNode).CanChoiceNodes.Clear();

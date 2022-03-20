@@ -15,7 +15,10 @@ public abstract class LivingEntity : MonoBehaviour
 
     public abstract void OnDamaged(int damagedFigure);
 
-    public abstract void Die();
+    public virtual void Die()
+    {
+        CombatChannel.RaiseEnemyDiedEvent(this);
+    }
 
     public abstract void DoAttack();
 
