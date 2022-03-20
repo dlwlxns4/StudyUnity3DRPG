@@ -10,8 +10,7 @@ public class Interactable : MonoBehaviour
 
     public void DoInteraction()
     {
-        Debug.Log(this.gameObject.name + " 과 상호작용!");
-        OnInteraction.Invoke();
         QuestManager.Instace.latestInteractObjectID = objectID;
+        OnInteraction.Invoke();
     }
 }

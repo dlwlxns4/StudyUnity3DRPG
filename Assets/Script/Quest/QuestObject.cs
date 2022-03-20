@@ -13,7 +13,6 @@ public class QuestObject : ScriptableObject
     DialogueNode dialogueNode;
     [SerializeField]
     string questClassName;
-    public bool isAccept{get;set;}
     public int QuestID => questID;
     public string QuestName => questName;
     public DialogueNode DialogueNode => dialogueNode;    

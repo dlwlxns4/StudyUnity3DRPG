@@ -143,21 +143,24 @@ public class UIDialogueController : MonoBehaviour, DialogueNodeVisitor
     {
         if(node.CanChoiceNodes.Any(x => x.ChoicePreview == isQuest))
         {
-            List<QuestObject> questObjects = QuestManager.Instace.FindQuest();
+            List<QuestData> questObjects = QuestManager.Instace.FindQuestData();
 
-            ((ChoiceDialogueNode)node.CanChoiceNodes.Find(x=>x.ChoicePreview == isQuest).ChoiceNode).CanChoiceNodes.Clear();
+            ChoiceDialogueNode choiceNode = ((ChoiceDialogueNode)node.CanChoiceNodes.Find(x=>x.ChoicePreview == isQuest).ChoiceNode);
+
+            choiceNode.CanChoiceNodes.Clear();
 
             foreach(var quest in questObjects)
             {
                 DialogueChoice choice = new DialogueChoice();
-                choice.ChoicePreview = quest.QuestName;
-                choice.ChoiceNode = quest.DialogueNode;
-                ((ChoiceDialogueNode)node.CanChoiceNodes.Find(x=>x.ChoicePreview == isQuest).ChoiceNode).CanChoiceNodes.Insert(0,choice);
+                choice.ChoicePreview = quest.questObject.QuestName;
+                choice.ChoiceNode = quest.questObject.DialogueNode;
+                choiceNode.CanChoiceNodes.Insert(0,choice);
             }
+
             DialogueChoice back = new DialogueChoice();
             back.ChoicePreview = "돌아가기";
             back.ChoiceNode = null;
-            ((ChoiceDialogueNode)node.CanChoiceNodes.Find(x=>x.ChoicePreview == isQuest).ChoiceNode).CanChoiceNodes.Add(back);
+            choiceNode.CanChoiceNodes.Add(back);
         }
     }
 }

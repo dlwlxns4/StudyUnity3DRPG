@@ -2,6 +2,18 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
+public class QuestData
+{
+    public QuestData(QuestObject obj, bool isAccept)
+    {
+        questObject = obj;
+        isAccept = false;
+    }
+    public QuestObject questObject;
+    public bool isAccept;
+}
+
 public class QuestManager : MonoBehaviour
 {
     private static QuestManager instance;
@@ -9,9 +21,11 @@ public class QuestManager : MonoBehaviour
     public int latestInteractObjectID{get;set;}
 
 
+    // [SerializeField]
+    // private List<QuestObject> questObjectList = new List<QuestObject>();
     [SerializeField]
-    private List<QuestObject> questObjectList = new List<QuestObject>();
-    
+    private List<QuestData> questDataList = new List<QuestData>();
+
     [SerializeField]
     private List<Quest> acceptQuestList = new List<Quest>();
 
@@ -26,25 +40,29 @@ public class QuestManager : MonoBehaviour
     }
 
 
-    public List<QuestObject> FindQuest()
+    public List<QuestData> FindQuestData()
     {   
-        List<QuestObject> questObjList = new List<QuestObject>();
-        questObjList = questObjectList.FindAll(x => x.QuestID == latestInteractObjectID);
+        // List<QuestObject> questObjList = new List<QuestObject>();
+        List<QuestData> questDatasList = new List<QuestData>();
+        questDatasList = questDataList.FindAll( x=> x.questObject.QuestID == latestInteractObjectID);
+        // questObjList = questObjectList.FindAll(x => x.QuestID == latestInteractObjectID);
 
-        return questObjectList;
+        return questDatasList;
     } 
 
     public void AcceptQuest()
     {
-        QuestObject questObj = questObjectList.Find(x=>x.QuestName == latestSelectQuestName);
-        string questClass = questObj.QuestClassName;
-        Type type = Type.GetType(questClass);
-        Quest obj = Activator.CreateInstance(type) as Quest;
-        obj.Init();
+        QuestData questObj = questDataList.Find(x=>x.questObject.QuestName == latestSelectQuestName);
+        if(questObj.isAccept == false)
+        {
+            questObj.isAccept = true;
+            string questClass = questObj.questObject.QuestClassName;
+            Type questType = Type.GetType(questClass);
+            Quest quest = Activator.CreateInstance(questType) as Quest;
+            quest.Init();
 
-        acceptQuestList.Add(obj);
-        Debug.Log("퀘스트 이름" + $" {obj.QuestName}");
-        questObj.isAccept=true;
-        uiChannel.RaiseSetQuestOnUI(obj.QuestName);
+            acceptQuestList.Add(quest);
+            uiChannel.RaiseSetQuestOnUI(quest.QuestName);
+        }
     }
 }
