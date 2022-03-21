@@ -50,6 +50,11 @@ public class QuestManager : MonoBehaviour
         return questDatasList;
     } 
 
+    public Quest FindQuestData(string questName)
+    {   
+       return acceptQuestList.Find(x=>x.QuestName == questName);
+    } 
+
     public void AcceptQuest()
     {
         QuestData questObj = questDataList.Find(x=>x.questObject.QuestName == latestSelectQuestName);

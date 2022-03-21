@@ -18,6 +18,8 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField]
     private GameObject questPanel;
     [SerializeField]
+    private GameObject questInformationPanel;
+    [SerializeField]
     private UIChannel uichannel;
 
     void Start()
@@ -79,6 +81,7 @@ public class PlayerInteract : MonoBehaviour
             }
             else
             {
+                questInformationPanel.SetActive(false);
                 questPanel.SetActive(false);
             }
         }
