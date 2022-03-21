@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questID: 1
   questName: "\uBC84\uC12F \uC18C\uD0D5\uC758\uB8B0"
-  dialogueNode: {fileID: 11400000, guid: 6f3a84f1aefa2484298f2b6e8cee2b5e, type: 2}
+  dialogueNode: {fileID: 11400000, guid: e6789df69cb07264eae69c1e31b9b7b6, type: 2}
   questClassName: MushroomHunter

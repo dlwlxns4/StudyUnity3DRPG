@@ -10193,6 +10193,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  objectID: 0
 --- !u!135 &424972733
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -11628,6 +11629,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  objectID: 0
 --- !u!135 &501442061
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -16130,8 +16132,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45fe47cb92e61984b83ae04d899f43c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questObjectList:
-  - {fileID: 11400000, guid: b6fd1cc7aed5fec4984524295eb0ef7d, type: 2}
+  questDataList:
+  - questObject: {fileID: 11400000, guid: b6fd1cc7aed5fec4984524295eb0ef7d, type: 2}
+    isAccept: 0
   uiChannel: {fileID: 11400000, guid: 9156071bf1649b849a50169040bc6142, type: 2}
 --- !u!4 &707027539 stripped
 Transform:
@@ -41649,6 +41652,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  objectID: 0
 --- !u!135 &1762597518
 SphereCollider:
   m_ObjectHideFlags: 0
