@@ -75,15 +75,7 @@ public class PlayerInteract : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Q))
         {
-            if(questPanel.activeSelf == false)
-            {
-                questPanel.SetActive(true);
-            }
-            else
-            {
-                questInformationPanel.SetActive(false);
-                questPanel.SetActive(false);
-            }
+            questPanel.SetActive(!(questPanel.activeSelf));
         }
     }
 }

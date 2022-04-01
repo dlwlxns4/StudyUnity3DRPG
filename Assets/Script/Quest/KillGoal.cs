@@ -18,7 +18,6 @@ public class KillGoal : QuestGoal
     public override void Init()
     {
         base.Init();
-        Debug.Log("!!");
         CombatChannel.OnEnemyDiedEvent += EnemyDied;
     }
 

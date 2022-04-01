@@ -119,7 +119,7 @@ public class UIDialogueController : MonoBehaviour, DialogueNodeVisitor
         listenToInput=true;
     
         
-        FindQuest(1, node);
+        FindQuest(node);
 
         foreach(DialogueChoice choice in node.CanChoiceNodes)
         {
@@ -139,7 +139,7 @@ public class UIDialogueController : MonoBehaviour, DialogueNodeVisitor
         nextNode = node.NextNode;
     }
 
-    private void FindQuest(int id, ChoiceDialogueNode node)
+    private void FindQuest(ChoiceDialogueNode node)
     {
         if(node.CanChoiceNodes.Any(x => x.ChoicePreview == isQuest))
         {

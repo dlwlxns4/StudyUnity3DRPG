@@ -24,6 +24,7 @@ public class Quest
 
         if(Completed)
         {
+            Debug.Log("퀘스트 완료!");
             GiveReward();
         }
     }

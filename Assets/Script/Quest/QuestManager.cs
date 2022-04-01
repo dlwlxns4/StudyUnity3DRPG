@@ -12,6 +12,7 @@ public class QuestData
     }
     public QuestObject questObject;
     public bool isAccept;
+    // IsComplete변수 나중에 추가
 }
 
 public class QuestManager : MonoBehaviour
@@ -68,6 +69,10 @@ public class QuestManager : MonoBehaviour
 
             acceptQuestList.Add(quest);
             uiChannel.RaiseSetQuestOnUI(quest.QuestName);
+        }
+        else
+        {
+            Debug.Log("!");
         }
     }
 }
