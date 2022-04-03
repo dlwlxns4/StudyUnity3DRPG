@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
@@ -9,7 +10,7 @@ public class UIDialogueChoiceController : MonoBehaviour
     [SerializeField]
     private DialogueChannel dialogueChannel;
     private DialogueNode choiceNextNdoe;
-
+    private string[] agreeArray = new string[]{"수락하기"};
     public DialogueChoice choice
     {
         set
@@ -26,7 +27,10 @@ public class UIDialogueChoiceController : MonoBehaviour
 
     public void OnClick()
     {
+        if(!agreeArray.Contains(choiceNode.text))
+        {
+            QuestManager.Instace.latestSelectQuestName = choiceNode.text;
+        }
         dialogueChannel.RaiseRequestDialogueNode(choiceNextNdoe);   
-        QuestManager.Instace.latestSelectQuestName = choiceNode.text;
     }
 }

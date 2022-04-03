@@ -15,4 +15,6 @@ MonoBehaviour:
   questID: 1
   questName: "\uBC84\uC12F \uC18C\uD0D5\uC758\uB8B0"
   dialogueNode: {fileID: 11400000, guid: 6f3a84f1aefa2484298f2b6e8cee2b5e, type: 2}
+  acceptDialogueNode: {fileID: 11400000, guid: 430211c4f23f602408d7afcfac3ef3b0, type: 2}
+  completeDialogueNode: {fileID: 0}
   questClassName: MushroomHunter

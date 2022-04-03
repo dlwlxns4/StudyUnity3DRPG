@@ -6,7 +6,8 @@ public class KillGoal : QuestGoal
 {
     public int EnemyID{get;set;}
 
-    public KillGoal(int enemyID, string description, bool completed, int currentAmount, int requiredAmount)
+    public KillGoal(int enemyID, string description, bool completed, int currentAmount, int requiredAmount, Quest owner)
+        :base(owner)
     {
         this.EnemyID = enemyID;
         this.Description = description;

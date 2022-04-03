@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "ScriptableObjects/Narration/Dialogue/Node/QuestAchieve")]
-public class QuestAchieveNode : DialogueNode
+public class QuestAchieveNode : QuestDialogueNode
 {
     [SerializeField]
     private DialogueNode nextNode;

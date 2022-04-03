@@ -18,5 +18,6 @@ public class QuestDialogueNode : DialogueNode
     {
         visitor.Visit(this);
         QuestManager.Instace.AcceptQuest();
+        QuestManager.Instace.CompleteQuest();
     }
 }

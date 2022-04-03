@@ -15,7 +15,6 @@ public class Quest
 
     public virtual void Init()
     {
-
     }
 
     public void CheckGoals()
@@ -24,12 +23,12 @@ public class Quest
 
         if(Completed)
         {
-            Debug.Log("퀘스트 완료!");
+            QuestManager.Instace.QuestSetIsComplete(QuestID);
             GiveReward();
         }
     }
 
-    void GiveReward()
+    public void GiveReward()
     {
     }
 }

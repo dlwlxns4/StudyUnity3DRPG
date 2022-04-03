@@ -85,8 +85,8 @@ public class UIDialogueController : MonoBehaviour, DialogueNodeVisitor
         textString = textString.Replace("\\n", "\n");
         dialogueText.text = textString;
         speakerText.text = node.DialogueLine.Speaker.characterName;
-
         node.Accept(this);
+
     }
 
     private void OnDialogueNodeEnd(DialogueNode node)
@@ -153,7 +153,20 @@ public class UIDialogueController : MonoBehaviour, DialogueNodeVisitor
             {
                 DialogueChoice choice = new DialogueChoice();
                 choice.ChoicePreview = quest.questObject.QuestName;
-                choice.ChoiceNode = quest.questObject.DialogueNode;
+
+                if(quest.isCompleted == true)
+                {
+                    choice.ChoiceNode = quest.questObject.CompleteDialogueNode;
+
+                }
+                else if(quest.isAccept == false)
+                {
+                    choice.ChoiceNode = quest.questObject.DialogueNode;
+                }
+                else
+                {
+                     choice.ChoiceNode = quest.questObject.AcceptDialogueNode;
+                }
                 choiceNode.CanChoiceNodes.Insert(0,choice);
             }
 

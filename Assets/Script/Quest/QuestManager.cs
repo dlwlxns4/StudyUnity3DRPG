@@ -12,7 +12,8 @@ public class QuestData
     }
     public QuestObject questObject;
     public bool isAccept;
-    // IsComplete변수 나중에 추가
+    public bool isCompleted;
+    public bool isReceiveReward;
 }
 
 public class QuestManager : MonoBehaviour
@@ -20,6 +21,7 @@ public class QuestManager : MonoBehaviour
     private static QuestManager instance;
     public static QuestManager Instace => instance;
     public int latestInteractObjectID{get;set;}
+    public int storyProgress{get;set;}
 
 
     // [SerializeField]
@@ -38,6 +40,7 @@ public class QuestManager : MonoBehaviour
     void Awake() 
     {
         instance = this; 
+        storyProgress=1;
     }
 
 
@@ -46,6 +49,7 @@ public class QuestManager : MonoBehaviour
         // List<QuestObject> questObjList = new List<QuestObject>();
         List<QuestData> questDatasList = new List<QuestData>();
         questDatasList = questDataList.FindAll( x=> x.questObject.QuestID == latestInteractObjectID);
+        questDatasList.RemoveAll(x=> x.isReceiveReward == true);
         // questObjList = questObjectList.FindAll(x => x.QuestID == latestInteractObjectID);
 
         return questDatasList;
@@ -59,7 +63,7 @@ public class QuestManager : MonoBehaviour
     public void AcceptQuest()
     {
         QuestData questObj = questDataList.Find(x=>x.questObject.QuestName == latestSelectQuestName);
-        if(questObj.isAccept == false)
+        if(questObj.isCompleted == false)
         {
             questObj.isAccept = true;
             string questClass = questObj.questObject.QuestClassName;
@@ -70,9 +74,28 @@ public class QuestManager : MonoBehaviour
             acceptQuestList.Add(quest);
             uiChannel.RaiseSetQuestOnUI(quest.QuestName);
         }
-        else
+    }
+
+    public void CompleteQuest()
+    {
+        Quest quest = acceptQuestList.Find(x=>x.QuestName == latestSelectQuestName);
+        if(quest == null)
         {
-            Debug.Log("!");
+            return;
         }
+
+        if(quest.Completed)
+        {
+            Debug.Log("퀘스트 완료 in QuestManager ");
+            questDataList.Find(x => x.questObject.QuestID == quest.QuestID).isReceiveReward=true;
+            acceptQuestList.Remove(quest);
+            quest.GiveReward();
+        }
+    }
+
+
+    public void QuestSetIsComplete(int questID)
+    {
+        questDataList.Find(x=> x.questObject.QuestID == questID).isCompleted = true;
     }
 }

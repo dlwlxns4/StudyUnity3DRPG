@@ -8,6 +8,12 @@ public class QuestGoal
     public bool Completed{get;set;}
     public int CurrentAmount{get;set;}
     public int RequiredAmount{get;set; }
+    public Quest GoalOwner{get;set;}
+
+    public QuestGoal(Quest owner)
+    {
+        GoalOwner = owner;
+    }
 
     public virtual void Init()
     {
@@ -20,6 +26,8 @@ public class QuestGoal
         if(CurrentAmount >= RequiredAmount)
         {
             Complete();
+            Debug.Log($"{Description} 완료");
+            GoalOwner.CheckGoals();
         }
     }
 

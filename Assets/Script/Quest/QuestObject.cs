@@ -12,9 +12,15 @@ public class QuestObject : ScriptableObject
     [SerializeField]
     DialogueNode dialogueNode;
     [SerializeField]
+    DialogueNode acceptDialogueNode;
+    [SerializeField]
+    DialogueNode completeDialogueNode;
+    [SerializeField]
     string questClassName;
     public int QuestID => questID;
     public string QuestName => questName;
     public DialogueNode DialogueNode => dialogueNode;    
     public string QuestClassName => questClassName;
+    public DialogueNode AcceptDialogueNode => acceptDialogueNode;
+    public DialogueNode CompleteDialogueNode => completeDialogueNode;
 }
