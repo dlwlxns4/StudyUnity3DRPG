@@ -17,10 +17,15 @@ public class QuestObject : ScriptableObject
     DialogueNode completeDialogueNode;
     [SerializeField]
     string questClassName;
+    [SerializeField]
+    int canAcceptStoryProgess;
+
+
     public int QuestID => questID;
     public string QuestName => questName;
     public DialogueNode DialogueNode => dialogueNode;    
     public string QuestClassName => questClassName;
     public DialogueNode AcceptDialogueNode => acceptDialogueNode;
     public DialogueNode CompleteDialogueNode => completeDialogueNode;
+    public int CanAcceptStoryProgress => canAcceptStoryProgess;
 }

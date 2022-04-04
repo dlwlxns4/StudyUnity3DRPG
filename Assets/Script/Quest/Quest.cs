@@ -24,11 +24,10 @@ public class Quest
         if(Completed)
         {
             QuestManager.Instace.QuestSetIsComplete(QuestID);
-            GiveReward();
         }
     }
 
-    public void GiveReward()
+    public virtual void GiveReward()
     {
     }
 }

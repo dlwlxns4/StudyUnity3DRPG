@@ -14,4 +14,10 @@ public class MushroomHunter : Quest
         Goals.Add(new KillGoal(1, "머쉬룸 10마리 처치", false, 0, 1, this));
         Goals.ForEach(x => x.Init());
     }
+
+    public override void GiveReward()
+    {
+        QuestManager.Instace.storyProgress++;
+        Debug.Log(QuestManager.Instace.storyProgress);
+    }
 }
