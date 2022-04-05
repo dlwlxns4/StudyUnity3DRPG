@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af50aee8c944ce44a9c2f31e9eec4b19, type: 3}
   m_Name: FairyKiller
   m_EditorClassIdentifier: 
-  questID: 0
-  questName: 
+  questID: 1
+  questName: "\uC694\uC815 \uCC98\uCE58"
   dialogueNode: {fileID: 0}
   acceptDialogueNode: {fileID: 0}
   completeDialogueNode: {fileID: 0}
-  questClassName: 
+  questClassName: FairyKiller
+  canAcceptStorySequence: 2

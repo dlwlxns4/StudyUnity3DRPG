@@ -18,3 +18,4 @@ MonoBehaviour:
   acceptDialogueNode: {fileID: 11400000, guid: 430211c4f23f602408d7afcfac3ef3b0, type: 2}
   completeDialogueNode: {fileID: 11400000, guid: 0dca09077919041479892306d26429bd, type: 2}
   questClassName: MushroomHunter
+  canAcceptStorySequence: 0

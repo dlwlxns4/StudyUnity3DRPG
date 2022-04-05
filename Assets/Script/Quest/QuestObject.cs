@@ -18,7 +18,7 @@ public class QuestObject : ScriptableObject
     [SerializeField]
     string questClassName;
     [SerializeField]
-    int canAcceptStoryProgess;
+    int canAcceptStorySequence;
 
 
     public int QuestID => questID;
@@ -27,5 +27,5 @@ public class QuestObject : ScriptableObject
     public string QuestClassName => questClassName;
     public DialogueNode AcceptDialogueNode => acceptDialogueNode;
     public DialogueNode CompleteDialogueNode => completeDialogueNode;
-    public int CanAcceptStoryProgress => canAcceptStoryProgess;
+    public int CanAcceptStorySequence => canAcceptStorySequence;
 }

@@ -52,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("IsRun", isRun);
     }
 
-    private void Rotate()
+    public void Rotate()
     {
         float xInput = playerInput.xInput;
         float yInput = playerInput.yInput;
@@ -96,7 +96,3 @@ public class PlayerMovement : MonoBehaviour
         attackEndEvent?.Invoke();
     }
 }
-
-
-
-

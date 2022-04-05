@@ -10,6 +10,7 @@ public class PlayerInput : MonoBehaviour
     public float yInput{get;set;}
     public bool jumpInput{get;set;}
     public bool attackInput{get;set;}
+    public bool rollInput{get;set;}
 
 
     void Update()
@@ -19,6 +20,7 @@ public class PlayerInput : MonoBehaviour
 
         jumpInput = Input.GetButton("Jump");
         attackInput = Input.GetButtonDown("Attack");
+        rollInput = Input.GetButtonDown("Dodge");
     }
     
     private void OnDisable() 

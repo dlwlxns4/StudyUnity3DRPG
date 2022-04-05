@@ -45,10 +45,16 @@ public class PlayerJump : MonoBehaviour
 
         }
     }
-    void OnCollisionStay(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
+        if(!this.isActiveAndEnabled)
+        {
+            return;
+        }
+
         if (collision.GetContact(0).normal.y >= 0.85f)
         {
+            Debug.Log("!!!!!!!!!!!");
             animator.SetBool("IsJump", false);
             playerRigidbody.velocity = Vector3.zero;
             canJump = true;
