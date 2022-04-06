@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class SetQuestList : MonoBehaviour
 {
     [SerializeField]
-    private UIChannel uichannel;
+    private UIChannel UIChannel;
     [SerializeField]
     private Text questNameText;
     [SerializeField]
@@ -20,12 +20,14 @@ public class SetQuestList : MonoBehaviour
     [SerializeField]
     private Text questGoalText;
 
+    public Quest currSelectQuest{get;set;}
+
     private void Awake() 
     {
-        uichannel.OnSetQuestOnUI += SetOnQuestList;
+        UIChannel.OnSetQuestOnUI += SetOnQuestList;
         this.gameObject.SetActive(false);
         gridLayout = GetComponentInChildren<GridLayoutGroup>();
-        uichannel.OnSetQuestInformation += SetQuestInformation;
+        UIChannel.OnSetQuestInformation += SetQuestInformation;
     }
 
     private void SetOnQuestList(string questName)

@@ -71,7 +71,7 @@ public class PlayerInteract : MonoBehaviour
         }
     }
 
-    void SetOnQuestPanel()
+    public void SetOnQuestPanel()
     {
         if(Input.GetKeyDown(KeyCode.Q))
         {

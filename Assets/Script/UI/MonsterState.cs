@@ -18,7 +18,7 @@ public class MonsterState : MonoBehaviour
 
     void Awake()
     {
-        uiChannel.OnSetMonsterState += SetState;
+        UIChannel.OnSetMonsterState += SetState;
         this.gameObject.SetActive(false);
     }
 

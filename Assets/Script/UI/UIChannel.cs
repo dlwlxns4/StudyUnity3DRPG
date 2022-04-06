@@ -4,25 +4,25 @@ using UnityEngine;
 public class UIChannel : ScriptableObject
 {
     public delegate void SetMonsterState(int hp, string name);
-    public SetMonsterState OnSetMonsterState;
+    public static SetMonsterState OnSetMonsterState;
 
     public delegate void SetQuestOnUI(string questName);
-    public SetQuestOnUI OnSetQuestOnUI;
+    public static SetQuestOnUI OnSetQuestOnUI;
 
     public delegate void SetQuestInformation(Quest quest);
-    public SetQuestInformation OnSetQuestInformation;
+    public static SetQuestInformation OnSetQuestInformation;
 
-    public void RaiseSetMonsterState(int hp, string name)
+    public static void RaiseSetMonsterState(int hp, string name)
     {
         OnSetMonsterState?.Invoke(hp, name);
     }
 
-    public void RaiseSetQuestOnUI(string questName)
+    public static void RaiseSetQuestOnUI(string questName)
     {
         OnSetQuestOnUI?.Invoke(questName);
     }
 
-    public void RaiseSetQuestInformation(Quest quest)
+    public static void RaiseSetQuestInformation(Quest quest)
     {
         OnSetQuestInformation?.Invoke(quest);
     }

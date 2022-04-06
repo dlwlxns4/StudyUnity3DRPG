@@ -29,7 +29,7 @@ public class Mushroom : LivingEntity
 
         RemainHp -= damagedFigure;
         animator.SetBool("IsDamaged", true);
-        uiChannel.RaiseSetMonsterState(RemainHp, MonsterName);
+        UIChannel.RaiseSetMonsterState(RemainHp, MonsterName);
         if(RemainHp <= 0 )
         {
             Die();

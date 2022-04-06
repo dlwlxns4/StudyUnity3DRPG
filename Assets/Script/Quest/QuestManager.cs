@@ -33,7 +33,7 @@ public class QuestManager : MonoBehaviour
     private List<Quest> acceptQuestList = new List<Quest>();
 
     [SerializeField]
-    private UIChannel uiChannel;
+    private UIChannel UIChannel;
 
     public string latestSelectQuestName{get;set;}
 
@@ -73,7 +73,7 @@ public class QuestManager : MonoBehaviour
             quest.Init();
 
             acceptQuestList.Add(quest);
-            uiChannel.RaiseSetQuestOnUI(quest.QuestName);
+            UIChannel.RaiseSetQuestOnUI(quest.QuestName);
         }
     }
 

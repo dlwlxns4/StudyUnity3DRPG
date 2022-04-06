@@ -28,6 +28,7 @@ public class KillGoal : QuestGoal
         {
             this.CurrentAmount++;
             Debug.Log($"{CurrentAmount} / {RequiredAmount}");
+            UIChannel.RaiseSetQuestInformation(GoalOwner);
             Evalutate();
         }
     }
