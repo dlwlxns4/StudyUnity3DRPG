@@ -37,6 +37,11 @@ public class UIDialogueController : MonoBehaviour, DialogueNodeVisitor
         choiceBoxTransform.gameObject.SetActive(false);
     }
 
+    private void OnDestroy() {
+        dialogueChannel.OnDialogueNodeStart -= OnDialogueNodeStart;
+        dialogueChannel.OnDialogueNodeEnd -= OnDialogueNodeEnd;
+    }
+
     // Update is called once per frame
     void Update()
     {

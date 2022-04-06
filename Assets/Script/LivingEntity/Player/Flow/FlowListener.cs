@@ -21,6 +21,11 @@ public class FlowListener : MonoBehaviour
         flowChannel.OnFlowStateChanged += OnFlowStateChanged;
     }
 
+    void OnDestroy()
+    {
+        flowChannel.OnFlowStateChanged -= OnFlowStateChanged;
+    }
+
     private void OnFlowStateChanged(FlowState state)
     {
         FlowListenerEntry foundEntry = Array.Find(flowEntries, x => x.state == state);

@@ -30,6 +30,13 @@ public class SetQuestList : MonoBehaviour
         UIChannel.OnSetQuestInformation += SetQuestInformation;
     }
 
+    private void OnDestroy() 
+    {
+        UIChannel.OnSetQuestInformation -= SetQuestInformation;
+        UIChannel.OnSetQuestOnUI -= SetOnQuestList;
+        
+    }
+
     private void SetOnQuestList(string questName)
     {
         GameObject questList = Instantiate(questListPrefab, Vector3.zero, Quaternion.identity);

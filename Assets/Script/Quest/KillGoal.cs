@@ -22,6 +22,12 @@ public class KillGoal : QuestGoal
         CombatChannel.OnEnemyDiedEvent += EnemyDied;
     }
 
+    private void OnDestroy() 
+    {
+        Debug.Log("삭제!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        CombatChannel.OnEnemyDiedEvent -= EnemyDied;
+    }
+
     void EnemyDied(LivingEntity enemy)
     {
         if(enemy.ObjectId == this.EnemyID)

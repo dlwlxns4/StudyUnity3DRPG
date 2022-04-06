@@ -39,8 +39,15 @@ public class QuestManager : MonoBehaviour
 
     void Awake() 
     {
-        instance = this; 
-        storyProgress=1;
+        if(instance == null)
+        {
+            instance = this; 
+            storyProgress=1;
+        }
+        else
+        {
+            Destroy(this);
+        }
     }
 
 
@@ -58,7 +65,8 @@ public class QuestManager : MonoBehaviour
 
     public Quest FindQuestData(string questName)
     {   
-       return acceptQuestList.Find(x=>x.QuestName == questName);
+        Quest quest = acceptQuestList.Find(x=>x.QuestName == questName);
+       return quest;
     } 
 
     public void AcceptQuest()

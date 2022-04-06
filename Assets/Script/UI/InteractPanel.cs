@@ -11,6 +11,12 @@ public class InteractPanel : MonoBehaviour
         dialogueChannel.OnDialogueEnd += SetOnPanel;
     }
 
+    void OnDestroy()
+    {
+        dialogueChannel.OnDialogueStart -= SetOffPanel;
+        dialogueChannel.OnDialogueEnd -= SetOnPanel;
+    }
+
     private void SetOffPanel(Dialogue dialogue)
     {
         gameObject.SetActive(false);

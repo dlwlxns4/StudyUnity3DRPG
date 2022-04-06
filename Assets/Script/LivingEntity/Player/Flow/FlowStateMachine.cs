@@ -18,8 +18,20 @@ public class FlowStateMachine : MonoBehaviour
 
     void Awake()
     {
-        instance = this;
-        flowChannel.OnFlowStateRequested += SetFlowState;
+        if(instance == null)
+        {
+            instance = this;
+            flowChannel.OnFlowStateRequested += SetFlowState;
+        }
+        else
+        {
+            Destroy(this);
+        }
+    }
+
+    private void OnDestroy() 
+    {
+        flowChannel.OnFlowStateRequested -= SetFlowState;
     }
 
     private void Start() 

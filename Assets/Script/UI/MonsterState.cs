@@ -22,10 +22,8 @@ public class MonsterState : MonoBehaviour
         this.gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private void OnDestroy() {
+        UIChannel.OnSetMonsterState -= SetState;
     }
 
     private void SetState(int remainHp, string name)

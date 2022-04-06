@@ -28,6 +28,17 @@ public class DialogueInstigator : MonoBehaviour
         dialogueChannel.OnDialogueNodeRequested += dialogueSequencer.StartDialogueNode;
     }
 
+    private void OnDestroy() 
+    {
+        dialogueSequencer.OnDialogueStart -= OnDialogueStart;
+        dialogueSequencer.OnDialogueEnd -= OnDialogueEnd;
+        dialogueSequencer.OnDialogueNodeStart -= dialogueChannel.RaiseDialogueNodeStart;
+        dialogueSequencer.OnDialogueNodeEnd -= dialogueChannel.RaiseDialogueNodeEnd;
+
+        dialogueChannel.OnDialogueRequsted -= dialogueSequencer.StartDialogue;
+        dialogueChannel.OnDialogueNodeRequested -= dialogueSequencer.StartDialogueNode;
+    }
+
     private void OnDialogueStart(Dialogue dialogue)
     {
         dialogueChannel.RaiseDialogueStart(dialogue);

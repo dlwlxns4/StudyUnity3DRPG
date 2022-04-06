@@ -45,7 +45,7 @@ public class PlayerInteract : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    public void OnTriggerExit(Collider other)
     {
         Interactable interactable = other.GetComponent<Interactable>();
         if(interactable != null)
@@ -68,6 +68,7 @@ public class PlayerInteract : MonoBehaviour
                 return ;
             }
             nearByInteractableObj[0].DoInteraction();
+            ClearNearObj();
         }
     }
 
@@ -77,5 +78,10 @@ public class PlayerInteract : MonoBehaviour
         {
             questPanel.SetActive(!(questPanel.activeSelf));
         }
+    }
+
+    public void ClearNearObj()
+    {
+        nearByInteractableObj.Clear();
     }
 }

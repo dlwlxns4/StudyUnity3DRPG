@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scene/VillageScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scene/OutOfTown.unity
+    guid: 370b53f067350434d8108d4e5267125d
   m_configObjects: {}
