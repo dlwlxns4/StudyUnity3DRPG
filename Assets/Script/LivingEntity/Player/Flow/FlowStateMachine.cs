@@ -45,7 +45,6 @@ public class FlowStateMachine : MonoBehaviour
         if(currentState != state)
         {
             currentState=state;
-            Debug.Log($"{currentState} {state} 실행");
             flowChannel.RaiseFlowStateChanged(currentState);
         }
     }

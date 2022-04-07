@@ -12,14 +12,9 @@ public class OnlyOneObject
         if(onlyOneObject.Any(x => x == gameObject.name) == false)
         {
             onlyOneObject.Add(gameObject.name);
-            foreach(string a in onlyOneObject)
-            {
-                Debug.Log(a);
-            }
         }
         else
         {
-            Debug.Log("삭제!!!");
             gameObject.GetComponent<DontDestroy>()?.DestoryObject();
         }
     }

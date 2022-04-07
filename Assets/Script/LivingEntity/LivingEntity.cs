@@ -1,6 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public abstract class LivingEntity : MonoBehaviour
 {
@@ -26,5 +26,15 @@ public abstract class LivingEntity : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         gameObject.SetActive(false);
+    }
+
+    public void Respawn(Vector3 spawnerPoint, int distance)
+    {
+        Vector3 spawnPosition = Random.insideUnitSphere*distance + spawnerPoint;
+        spawnPosition.y = spawnerPoint.y+0.5f;
+        RemainHp = MaxHp;
+        IsDead=false;
+        this.transform.position=spawnPosition;
+        this.gameObject.SetActive(true);
     }
 }
