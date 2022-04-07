@@ -35,6 +35,7 @@ public abstract class LivingEntity : MonoBehaviour
         RemainHp = MaxHp;
         IsDead=false;
         this.transform.position=spawnPosition;
+        this.GetComponent<BoxCollider>().enabled = true;
         this.gameObject.SetActive(true);
     }
 }

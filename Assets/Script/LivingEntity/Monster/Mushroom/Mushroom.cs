@@ -25,7 +25,10 @@ public class Mushroom : LivingEntity
     public override void OnDamaged(int damagedFigure)
     {
         if(IsDead)
+        {
+            Debug.Log("죽은몬스터야!!");
             return;
+        }
 
         RemainHp -= damagedFigure;
         animator.SetBool("IsDamaged", true);
