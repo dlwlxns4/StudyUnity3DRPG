@@ -12,20 +12,27 @@ public class PlayerRoll : MonoBehaviour
     private FlowChannel flowChannel;
     [SerializeField]
     private FlowState rollState;
-
+    private PlayerState playerState;
     void Start()
     {
         playerInput = GetComponent<PlayerInput>();
         animator = GetComponent<Animator>();
         playerRigidbody = GetComponent<Rigidbody>();
+        playerState = GetComponent<PlayerState>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(playerState.RemainMp<5)
+        {
+            return;
+        }
+
         if(playerInput.rollInput)
         {
             playerInput.rollInput=false;
+            UIChannel.RaiseSetMpState(5);
             animator.Play("Roll");
             StartCoroutine(Dodge());
         }

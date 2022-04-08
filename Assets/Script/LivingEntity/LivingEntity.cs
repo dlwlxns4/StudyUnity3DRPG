@@ -20,9 +20,7 @@ public abstract class LivingEntity : MonoBehaviour
         CombatChannel.RaiseEnemyDiedEvent(this);
     }
 
-    public abstract void DoAttack();
-
-    public IEnumerator DieEffect()
+    public virtual IEnumerator DieEffect()
     {
         yield return new WaitForSeconds(3f);
         gameObject.SetActive(false);

@@ -11,6 +11,8 @@ public class UIChannel : ScriptableObject
 
     public delegate void SetQuestInformation(Quest quest);
     public static SetQuestInformation OnSetQuestInformation;
+    public delegate void SpendMpEvent(int spendMp);
+    public static SpendMpEvent OnSpendMp;
 
     public static void RaiseSetMonsterState(int hp, string name)
     {
@@ -25,5 +27,10 @@ public class UIChannel : ScriptableObject
     public static void RaiseSetQuestInformation(Quest quest)
     {
         OnSetQuestInformation?.Invoke(quest);
+    }
+
+    public static void RaiseSetMpState(int spendMp)
+    {
+        OnSpendMp?.Invoke(spendMp);
     }
 }

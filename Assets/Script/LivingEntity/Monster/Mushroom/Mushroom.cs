@@ -49,9 +49,4 @@ public class Mushroom : LivingEntity
         this.GetComponent<BoxCollider>().enabled = false;
         base.Die();
     }
-
-    public override void DoAttack()
-    {
-        return ;
-    }
 }
