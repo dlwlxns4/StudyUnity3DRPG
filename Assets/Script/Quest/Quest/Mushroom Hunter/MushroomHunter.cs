@@ -17,7 +17,7 @@ public class MushroomHunter : Quest
 
     public override void GiveReward()
     {
+        base.GiveReward();
         QuestManager.Instace.storyProgress++;
-        Debug.Log(QuestManager.Instace.storyProgress);
     }
 }

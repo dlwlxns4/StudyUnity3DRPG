@@ -9,6 +9,9 @@ public class UIChannel : ScriptableObject
     public delegate void SetQuestOnUI(string questName);
     public static SetQuestOnUI OnSetQuestOnUI;
 
+    delegate void SetRemoveQuestOnUI(string questName);
+    public static SetQuestOnUI OnRemoveQuestOnUI;
+
     public delegate void SetQuestInformation(Quest quest);
     public static SetQuestInformation OnSetQuestInformation;
     public delegate void SpendMpEvent(int spendMp);
@@ -22,6 +25,11 @@ public class UIChannel : ScriptableObject
     public static void RaiseSetQuestOnUI(string questName)
     {
         OnSetQuestOnUI?.Invoke(questName);
+    }
+
+    public static void RaiseRemoveQuestOnUI(string questName)
+    {
+        OnRemoveQuestOnUI?.Invoke(questName);
     }
 
     public static void RaiseSetQuestInformation(Quest quest)

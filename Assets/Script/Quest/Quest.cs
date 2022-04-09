@@ -29,5 +29,6 @@ public class Quest
 
     public virtual void GiveReward()
     {
+        UIChannel.RaiseRemoveQuestOnUI(QuestName);
     }
 }

@@ -33,11 +33,10 @@ public class MpManager : MonoBehaviour
         if(MpRecoveryDelay <=0)
         {
             MpRecoveryDelay=1;
-            mpText.text = $"{playerState.RemainMp}";
             playerState.RemainMp +=1;
+            mpText.text = $"{playerState.RemainMp}";
             StartCoroutine(FillMpEffect());
         }
-        Debug.Log(playerState.RemainMp);
     }
 
     void OnDestroy() 

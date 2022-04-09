@@ -66,7 +66,12 @@ public class QuestManager : MonoBehaviour
     public Quest FindQuestData(string questName)
     {   
         Quest quest = acceptQuestList.Find(x=>x.QuestName == questName);
-       return quest;
+        return quest;
+    } 
+
+    public void RemoveQuestData(string questName)
+    {   
+       acceptQuestList.Remove(acceptQuestList.Find(x=>x.QuestName == questName));
     } 
 
     public void AcceptQuest()

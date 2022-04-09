@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class SetQuestList : MonoBehaviour
 {
@@ -19,21 +20,24 @@ public class SetQuestList : MonoBehaviour
     private Text questDescriptionText;
     [SerializeField]
     private Text questGoalText;
+    private List<GameObject> questsList = new List<GameObject>();
 
     public Quest currSelectQuest{get;set;}
 
     private void Awake() 
     {
-        UIChannel.OnSetQuestOnUI += SetOnQuestList;
         this.gameObject.SetActive(false);
         gridLayout = GetComponentInChildren<GridLayoutGroup>();
         UIChannel.OnSetQuestInformation += SetQuestInformation;
+        UIChannel.OnSetQuestOnUI += SetOnQuestList;
+        UIChannel.OnRemoveQuestOnUI += RemoveQuestList;
     }
 
     private void OnDestroy() 
     {
         UIChannel.OnSetQuestInformation -= SetQuestInformation;
         UIChannel.OnSetQuestOnUI -= SetOnQuestList;
+        UIChannel.OnRemoveQuestOnUI -= RemoveQuestList;
         
     }
 
@@ -41,8 +45,17 @@ public class SetQuestList : MonoBehaviour
     {
         GameObject questList = Instantiate(questListPrefab, Vector3.zero, Quaternion.identity);
         questList.GetComponentInChildren<Text>().text = questName;
+        questsList.Add(questList);
 
         questList.transform.SetParent(gridLayout.transform, false);
+    }
+
+    private void RemoveQuestList(string questName)
+    {
+        GameObject quest = questsList.Find(x => x.GetComponentInChildren<Text>().text == questName);
+        questsList.Remove(quest);
+        Destroy(quest);
+        informationPanel.SetActive(false);
     }
 
     private void SetQuestInformation(Quest quest)

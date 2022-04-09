@@ -16,28 +16,12 @@ public class Mushroom : LivingEntity
         IsDead=false;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public override void OnDamaged(int damagedFigure)
     {
-        if(IsDead)
-        {
-            Debug.Log("죽은몬스터야!!");
-            return;
-        }
-
-        RemainHp -= damagedFigure;
+        base.OnDamaged(damagedFigure);
         animator.SetBool("IsDamaged", true);
-        UIChannel.RaiseSetMonsterState(RemainHp, MonsterName);
-        if(RemainHp <= 0 )
-        {
-            Die();
-        }
     }
+
 
     public override void Die()
     {

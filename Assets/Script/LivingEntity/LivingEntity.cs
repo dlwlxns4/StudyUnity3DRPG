@@ -13,7 +13,20 @@ public abstract class LivingEntity : MonoBehaviour
     [SerializeField]
     protected UIChannel uiChannel;
 
-    public abstract void OnDamaged(int damagedFigure);
+    public virtual void OnDamaged(int damagedFigure)
+    {
+        if(IsDead)
+        {
+            return;
+        }
+
+        RemainHp -= damagedFigure;
+        UIChannel.RaiseSetMonsterState(RemainHp, MonsterName);
+        if(RemainHp <= 0 )
+        {
+            Die();
+        }
+    }
 
     public virtual void Die()
     {
