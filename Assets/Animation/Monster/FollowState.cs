@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class FollowState : StateMachineBehaviour
 {
-    Transform enemyTransform;
-    Enemy enemy;
+    protected Transform enemyTransform;
+    protected Enemy enemy;
+    [SerializeField]
+    protected float moveSpeed;
+    [SerializeField]
+    protected float targetDistance;
+
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
        enemyTransform = animator.GetComponent<Transform>();
@@ -14,16 +19,10 @@ public class FollowState : StateMachineBehaviour
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        enemyTransform.position = Vector3.MoveTowards(enemyTransform.position, enemy.GetTargetTransform().position, Time.deltaTime * 1f);
+        enemyTransform.position = Vector3.MoveTowards(enemyTransform.position, enemy.GetTargetTransform().position, Time.deltaTime * moveSpeed);
         enemyTransform.rotation = Quaternion.Lerp(enemyTransform.rotation, Quaternion.LookRotation(enemy.GetTargetTransform().position - enemyTransform.position), Time.deltaTime * 5f);
-        
-        if(Vector3.Distance(enemyTransform.position, enemy.GetTargetTransform().position) > 4f )
-        {
-            animator.SetBool("IsBack", true);
-            animator.SetBool("IsFollow",false);
-        }
 
-        if(Vector3.Distance(enemyTransform.position, enemy.GetTargetTransform().position) < 1f )
+        if(Vector3.Distance(enemyTransform.position, enemy.GetTargetTransform().position) < targetDistance )
         {
             animator.SetBool("IsReady", true);
             animator.SetBool("IsFollow",false);

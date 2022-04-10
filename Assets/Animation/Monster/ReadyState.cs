@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class ReadyState : StateMachineBehaviour
 {
-    Transform enemyTransform;
-    Enemy enemy;
+    protected Transform enemyTransform;
+    protected Enemy enemy;
 
-    float attackDelay=0f;
+    protected float attackDelay=0f;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
