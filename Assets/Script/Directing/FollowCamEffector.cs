@@ -5,9 +5,18 @@ using Cinemachine;
 
 public class FollowCamEffector : MonoBehaviour
 {
+    float shakeDuration =0.2f;
+    float shakeAmplitude = 1f;
+    float shakeFrequency = 2.0f;
+    float shakeElaspedTime = 0f;
+    [SerializeField]
+    CinemachineVirtualCamera virtualCamera;
+    CinemachineBasicMultiChannelPerlin virtualCameraNoise;
+
     void Awake()
     {
         CameraChannel.OnshakeCamera += ShakeCamera;
+        virtualCameraNoise = virtualCamera.GetCinemachineComponent<Cinemachine.CinemachineBasicMultiChannelPerlin>();
     }
 
     void OnDestroy()
@@ -18,17 +27,15 @@ public class FollowCamEffector : MonoBehaviour
     void ShakeCamera()
     {
         StartCoroutine(ShakeCameraCoroutine());
-        Debug.Log("카메라 흔들기");
     }
 
     IEnumerator ShakeCameraCoroutine()
     {
+        virtualCameraNoise.m_AmplitudeGain = shakeAmplitude;
+        virtualCameraNoise.m_FrequencyGain = shakeFrequency;
 
-        int x, y;
-        x = Random.Range(1,3);
-        y = Random.Range(1,3);
-        Vector3 shakePos = new Vector3(x+100,this.transform.position.y, y+100);
-        this.transform.position = shakePos;
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.08f);
+         virtualCameraNoise.m_AmplitudeGain = 0;
+        virtualCameraNoise.m_FrequencyGain = shakeFrequency;
     }
 }

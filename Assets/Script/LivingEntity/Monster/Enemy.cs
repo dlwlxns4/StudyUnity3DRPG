@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
     private Transform targetPosition;
     private Vector3 bornedPosition;
 
-    void Start()
+    void Awake()
     {
         targetPosition = GameObject.FindGameObjectWithTag("Player").transform;
         bornedPosition = transform.position;

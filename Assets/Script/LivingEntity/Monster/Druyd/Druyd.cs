@@ -20,7 +20,6 @@ public class Druyd : LivingEntity
         animator = GetComponent<Animator>();
         IsDead=false;
         targetTransform = GetComponent<Enemy>().GetTargetTransform();
-        Debug.Log(targetTransform.position);
     }
 
     public override void OnDamaged(int damagedFigure)
