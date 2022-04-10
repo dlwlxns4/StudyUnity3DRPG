@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
-
 public class FollowCamEffector : MonoBehaviour
 {
     float shakeDuration =0.2f;
@@ -12,7 +11,7 @@ public class FollowCamEffector : MonoBehaviour
     [SerializeField]
     CinemachineVirtualCamera virtualCamera;
     CinemachineBasicMultiChannelPerlin virtualCameraNoise;
-
+    
     void Awake()
     {
         CameraChannel.OnshakeCamera += ShakeCamera;

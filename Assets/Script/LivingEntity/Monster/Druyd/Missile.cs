@@ -13,17 +13,20 @@ public class Missile : MonoBehaviour
 
     public void Init(Vector3 targetPos)
     {
-        targetPosition = targetPos;
+        targetPosition = targetPos- transform.position ;
+        targetPosition = targetPosition.normalized;
     }
 
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime * moveSpeed);
+        transform.Translate(targetPosition * Time.deltaTime * moveSpeed);
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter(Collision other) 
     {
+        Debug.Log(other.gameObject.name);
         Instantiate(boomParticle, this.transform.position, Quaternion.identity);
         Destroy(this.gameObject);
     }
+
 }
