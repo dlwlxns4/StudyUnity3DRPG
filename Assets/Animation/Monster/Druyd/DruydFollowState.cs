@@ -9,18 +9,24 @@ public class DruydFollowState : FollowState
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
-        attackDelay = Random.Range(5f, 10f);
+        attackDelay = Random.Range(5f, 7f);
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        enemyTransform.position = Vector3.MoveTowards(enemyTransform.position, enemy.GetTargetTransform().position, Time.deltaTime * moveSpeed);
         enemyTransform.rotation = Quaternion.Lerp(enemyTransform.rotation, Quaternion.LookRotation(enemy.GetTargetTransform().position - enemyTransform.position), Time.deltaTime * 5f);
-    
+
+        if(Vector3.Distance(enemyTransform.position, enemy.GetTargetTransform().position) >=2f)
+        {
+            enemyTransform.position = Vector3.MoveTowards(enemyTransform.position, enemy.GetTargetTransform().position, Time.deltaTime * moveSpeed);
+        }
+
         elaspedTime+= Time.deltaTime;
         if(attackDelay <= elaspedTime)
         {
             animator.SetBool("IsReady", true);
+            animator.SetBool("IsFollow", false);
+            elaspedTime=0;
         }
     }
 
