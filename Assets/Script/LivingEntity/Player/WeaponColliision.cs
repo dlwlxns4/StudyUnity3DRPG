@@ -7,6 +7,8 @@ public class WeaponColliision : MonoBehaviour
     public bool CanDamage{get;set;}
     private int damageFigure=5;
     private PlayerAttack playerAttack; 
+    [SerializeField]
+    private GameObject hitParticlePrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -20,10 +22,12 @@ public class WeaponColliision : MonoBehaviour
 
         if(other.tag == "Enemy")
         {
+            Instantiate(hitParticlePrefab, (other.transform.position+this.transform.position)/2, Quaternion.identity);
             other.GetComponent<LivingEntity>()?.OnDamaged(damageFigure);
             CameraChannel.RaiseShakeCamera();
         }    
     }
+
 
     private void OnTriggerExit(Collider other) 
     {

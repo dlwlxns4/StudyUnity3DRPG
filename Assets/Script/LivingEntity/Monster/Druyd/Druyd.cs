@@ -11,6 +11,9 @@ public class Druyd : LivingEntity, IBasicAttack, IAoeAttack
     Transform targetTransform;
     [SerializeField]
     GameObject BeamShooter;
+    [SerializeField]
+    GameObject pillarBlastPrefab;
+
     void Start()
     {
         MaxHp=500;
@@ -40,6 +43,23 @@ public class Druyd : LivingEntity, IBasicAttack, IAoeAttack
 
     public void AoeAttack()
     {
-        throw new System.NotImplementedException();
+        StartCoroutine(BlastAoeAttack());
+    }
+
+    IEnumerator BlastAoeAttack()
+    {
+        int count=0;
+        for(int i=0; i<3; ++i)
+        {
+            while(count<10)
+            {
+                Vector3 spawnPosition = Random.insideUnitSphere * 10 + this.transform.position;
+                spawnPosition.y = this.transform.position.y + 0.5f;
+                Instantiate(pillarBlastPrefab, spawnPosition, Quaternion.identity);
+                count++;
+            }
+            count=0;
+            yield return new WaitForSeconds(1.5f);
+        }
     }
 }

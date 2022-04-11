@@ -4,35 +4,20 @@ using UnityEngine;
 
 public class DruydReadyState : ReadyState
 {
-    enum AttackState {Shooting, AOE};
-    AttackState attackState;
+    EnemyAttack enemyAttack;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
-        attackState = (AttackState)Random.Range(0, 1);
-        Debug.Log(attackState);
+        enemyAttack = animator.GetComponent<EnemyAttack>();
+        enemyAttack.StartCoroutine(enemyAttack.AttackDelay());
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         enemyTransform.rotation = Quaternion.Lerp(enemyTransform.rotation, Quaternion.LookRotation(enemy.GetTargetTransform().position - enemyTransform.position), Time.deltaTime * 5f);
-       
-        attackDelay+=Time.deltaTime;
-        if(attackDelay >=2f)
-        {
-            switch(attackState)
-            {
-                case AttackState.Shooting:
-                animator.SetBool("IsBeamAttack", true);
-                break;
-            }
 
 
-            attackDelay = 0;
-            animator.SetBool("IsFollow", false);
-            animator.SetBool("IsReady", false);
-        }
         
 
     }

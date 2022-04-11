@@ -8,10 +8,14 @@ public class DruydAttackState : AttackState
     int attackCount=0;
     [SerializeField]
     Animation beamAnimation;
+    EnemyAttack enemyAttack;
+
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
         animator.SetBool("IsBeamAttack", false);
+        animator.SetBool("IsAoeAttack", false);
+        enemyAttack = animator.GetComponent<EnemyAttack>();
     }
 
     
@@ -21,15 +25,7 @@ public class DruydAttackState : AttackState
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        attackCount++;
-        if(attackCount < maxAttackCount)
-        {
-            animator.SetBool("IsBeamAttack", true);
-        }
-        else
-        {
-            attackCount=0;
-        }
+        enemyAttack.CheckAttackEnd();
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
