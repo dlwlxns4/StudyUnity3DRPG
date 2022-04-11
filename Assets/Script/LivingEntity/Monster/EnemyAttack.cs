@@ -73,6 +73,10 @@ public class EnemyAttack : MonoBehaviour
                 beamAttackCount=0;
             }
             break;
+
+            case AttackState.AOE:
+            animator.SetBool("IsAoeAttack", false);
+            break;
         }
     }
 }

@@ -11,7 +11,17 @@ public abstract class LivingEntity : MonoBehaviour
     public string MonsterName{get;set;}
     public int ObjectId{get;set;}
     [SerializeField]
+    Material material;
+    [SerializeField]
+    Material flickerMaterial;
     protected UIChannel uiChannel;
+    [SerializeField]
+    private SkinnedMeshRenderer meshRenderer;
+
+    private void Awake() 
+    {
+        meshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
+    }
 
     public virtual void OnDamaged(int damagedFigure)
     {
@@ -22,6 +32,7 @@ public abstract class LivingEntity : MonoBehaviour
 
         RemainHp -= damagedFigure;
         UIChannel.RaiseSetMonsterState(RemainHp, MonsterName);
+        StartCoroutine(MaterialFlicker());
         if(RemainHp <= 0 )
         {
             Die();
@@ -48,5 +59,12 @@ public abstract class LivingEntity : MonoBehaviour
         this.transform.position=spawnPosition;
         this.GetComponent<BoxCollider>().enabled = true;
         this.gameObject.SetActive(true);
+    }
+
+    IEnumerator MaterialFlicker()
+    {
+        meshRenderer.material = flickerMaterial;
+        yield return new WaitForSeconds(0.02f);
+        meshRenderer.material = material;
     }
 }

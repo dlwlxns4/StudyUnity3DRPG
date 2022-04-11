@@ -27,10 +27,4 @@ public class WeaponColliision : MonoBehaviour
             CameraChannel.RaiseShakeCamera();
         }    
     }
-
-
-    private void OnTriggerExit(Collider other) 
-    {
-        
-    }
 }
