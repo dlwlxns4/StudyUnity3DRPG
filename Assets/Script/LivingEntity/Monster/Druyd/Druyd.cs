@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Druyd : LivingEntity
+public class Druyd : LivingEntity, IBasicAttack, IAoeAttack
 {
 
     private Animator animator;
@@ -31,5 +31,15 @@ public class Druyd : LivingEntity
     {
         GameObject missile = Instantiate(missilePrefab, BeamShooter.transform.position, Quaternion.identity);
         missile.GetComponent<Missile>().Init(targetTransform.position);
+    }
+
+    public void BasicAttack()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void AoeAttack()
+    {
+        throw new System.NotImplementedException();
     }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+
 public class FollowCamEffector : MonoBehaviour
 {
     float shakeDuration =0.2f;
