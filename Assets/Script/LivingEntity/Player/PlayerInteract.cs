@@ -76,6 +76,7 @@ public class PlayerInteract : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Q))
         {
+            Debug.Log("!!!!!!!");
             questPanel.SetActive(!(questPanel.activeSelf));
         }
     }

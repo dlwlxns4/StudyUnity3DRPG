@@ -13,6 +13,8 @@ public class Druyd : LivingEntity, IBasicAttack, IAoeAttack
     GameObject BeamShooter;
     [SerializeField]
     GameObject pillarBlastPrefab;
+    [SerializeField]
+    GameObject pillarEffectPrefab;
 
     void Start()
     {
@@ -49,17 +51,24 @@ public class Druyd : LivingEntity, IBasicAttack, IAoeAttack
     IEnumerator BlastAoeAttack()
     {
         int count=0;
+        Vector3 rotation = new Vector3(-90,0,0);
         for(int i=0; i<3; ++i)
         {
-            while(count<10)
+            while(count<20)
             {
                 Vector3 spawnPosition = Random.insideUnitSphere * 10 + this.transform.position;
-                spawnPosition.y = this.transform.position.y + 0.5f;
-                Instantiate(pillarBlastPrefab, spawnPosition, Quaternion.identity);
+                spawnPosition.y = this.transform.position.y + 0.6f;
+                GameObject gameObject =Instantiate(pillarEffectPrefab, spawnPosition, Quaternion.Euler(rotation));
+                StartCoroutine(CreateExplosion(spawnPosition));
                 count++;
             }
             count=0;
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(2f);
         }
+    }
+    IEnumerator CreateExplosion(Vector3 transform)
+    {
+        yield return new WaitForSeconds(1.5f);
+         Instantiate(pillarBlastPrefab, transform, Quaternion.identity);
     }
 }

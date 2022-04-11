@@ -23497,6 +23497,10 @@ PrefabInstance:
       propertyPath: pillarBlastPrefab
       value: 
       objectReference: {fileID: 183926, guid: 96d8221c1bb8b404fb8cd7080f372017, type: 3}
+    - target: {fileID: 874377911825550458, guid: bbee8316f45cb8e42b3ea461f81323e2, type: 3}
+      propertyPath: pillarEffectPrefab
+      value: 
+      objectReference: {fileID: 138498, guid: 0c3499ba3ca96534faae734fb5276605, type: 3}
     - target: {fileID: 1392008189353600828, guid: bbee8316f45cb8e42b3ea461f81323e2, type: 3}
       propertyPath: m_Name
       value: Flower Dryad 1
@@ -33275,6 +33279,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bebc11d26168c0046b967074c835336f, type: 3}
+--- !u!1001 &920568382
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 138498, guid: 0c3499ba3ca96534faae734fb5276605, type: 3}
+      propertyPath: m_Name
+      value: StarVortexYellow 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 432750, guid: 0c3499ba3ca96534faae734fb5276605, type: 3}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 432750, guid: 0c3499ba3ca96534faae734fb5276605, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 432750, guid: 0c3499ba3ca96534faae734fb5276605, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 432750, guid: 0c3499ba3ca96534faae734fb5276605, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 432750, guid: 0c3499ba3ca96534faae734fb5276605, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 432750, guid: 0c3499ba3ca96534faae734fb5276605, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 432750, guid: 0c3499ba3ca96534faae734fb5276605, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 432750, guid: 0c3499ba3ca96534faae734fb5276605, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 432750, guid: 0c3499ba3ca96534faae734fb5276605, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 432750, guid: 0c3499ba3ca96534faae734fb5276605, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 432750, guid: 0c3499ba3ca96534faae734fb5276605, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0c3499ba3ca96534faae734fb5276605, type: 3}
 --- !u!4 &920757111 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8680173174155540286, guid: bebc11d26168c0046b967074c835336f, type: 3}

@@ -20,10 +20,6 @@ public class Portal : MonoBehaviour
 
     void Awake()   
     {
-        if(new Vector2(0, -1.0f).normalized == -Vector2.up)
-        {
-            Debug.Log("몰루");
-        }
         player = GameObject.FindWithTag("Player");
     }
     
