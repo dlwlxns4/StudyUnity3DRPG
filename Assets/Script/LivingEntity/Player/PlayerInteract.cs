@@ -19,8 +19,6 @@ public class PlayerInteract : MonoBehaviour
     private GameObject questPanel;
     [SerializeField]
     private GameObject questInformationPanel;
-    [SerializeField]
-    private UIChannel uichannel;
 
     void Start()
     {
@@ -33,6 +31,7 @@ public class PlayerInteract : MonoBehaviour
     {
         InteractNPC();
         SetOnQuestPanel();
+        SetOnInventory();
     }
     
     private void OnTriggerEnter(Collider other)
@@ -76,7 +75,6 @@ public class PlayerInteract : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Q))
         {
-            Debug.Log("!!!!!!!");
             questPanel.SetActive(!(questPanel.activeSelf));
         }
     }
@@ -84,5 +82,13 @@ public class PlayerInteract : MonoBehaviour
     public void ClearNearObj()
     {
         nearByInteractableObj.Clear();
+    }
+
+    public void SetOnInventory()
+    {
+        if(Input.GetKeyDown(KeyCode.I))
+        {
+            UIChannel.RaiseSetInven();
+        }
     }
 }

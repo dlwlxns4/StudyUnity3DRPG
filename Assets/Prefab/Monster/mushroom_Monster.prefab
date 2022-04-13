@@ -233,6 +233,7 @@ GameObject:
   - component: {fileID: 423929106287453511}
   - component: {fileID: 423929106289458498}
   - component: {fileID: 423929106289458499}
+  - component: {fileID: -1058993110579204754}
   m_Layer: 0
   m_Name: mushroom_Monster
   m_TagString: Enemy
@@ -315,6 +316,21 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: c1a31b6c8311a4a4aa08a5d67d47afee, type: 2}
   flickerMaterial: {fileID: 2100000, guid: 28a0ec0f3d6151d499ba65a25763debb, type: 2}
   meshRenderer: {fileID: 0}
+--- !u!114 &-1058993110579204754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423929106289458501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 115a06e447935b04c86b1e7ac7982eaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemList:
+  - itemPrefab: {fileID: 127884, guid: ff0beb77e0c7c0347a18a01cb991713d, type: 3}
+    probability: 100
 --- !u!1 &423929106289526161
 GameObject:
   m_ObjectHideFlags: 0

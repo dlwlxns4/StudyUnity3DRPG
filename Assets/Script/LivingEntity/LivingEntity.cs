@@ -36,6 +36,7 @@ public abstract class LivingEntity : MonoBehaviour
         if(RemainHp <= 0 )
         {
             Die();
+            this.GetComponent<ItemDropable>()?.DropItem();
         }
     }
 
@@ -64,7 +65,7 @@ public abstract class LivingEntity : MonoBehaviour
     IEnumerator MaterialFlicker()
     {
         meshRenderer.material = flickerMaterial;
-        yield return new WaitForSeconds(0.02f);
+        yield return new WaitForSeconds(0.05f);
         meshRenderer.material = material;
     }
 }
