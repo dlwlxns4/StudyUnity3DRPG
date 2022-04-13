@@ -18,6 +18,10 @@ public class UIChannel : ScriptableObject
     public static SpendMpEvent OnSpendMp;
     public delegate void SetInvenEvent();
     public static SetInvenEvent OnSetInven;
+    public delegate void AccuireItemEvent(ItemData item);
+    public static AccuireItemEvent OnAcquireItem;
+    public delegate void AcquireCoinEvent(int coin);
+    public static AcquireCoinEvent OnAcquireCoin;
 
     public static void RaiseSetMonsterState(int hp, string name)
     {
@@ -47,5 +51,15 @@ public class UIChannel : ScriptableObject
     public static void RaiseSetInven()
     {
         OnSetInven?.Invoke();
+    }
+
+    public static void RaiseAcquireItem(ItemData itemData)
+    {
+        OnAcquireItem?.Invoke(itemData);
+    }
+
+    public static void RaiseAccuireCoin(int coin)
+    {
+        OnAcquireCoin?.Invoke(coin);
     }
 }

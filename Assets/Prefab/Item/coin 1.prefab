@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 3317856}
   - component: {fileID: 2387336}
   - component: {fileID: 9506702}
-  - component: {fileID: 150903786534234850}
   - component: {fileID: 7815188439619486334}
-  - component: {fileID: -4871366241575407213}
   - component: {fileID: -6763514821699173925}
+  - component: {fileID: 858116383978595504}
+  - component: {fileID: -4871366241575407213}
   m_Layer: 0
   m_Name: coin 1
   m_TagString: Untagged
@@ -30,8 +30,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 127884}
-  m_LocalRotation: {x: 0, y: 0.9570096, z: 0, w: 0.29005632}
-  m_LocalPosition: {x: 2.7097435, y: 0.6128007, z: 0.520657}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
@@ -105,18 +105,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &150903786534234850
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 127884}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 264d6fa550abc41438c262e04ee936de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!135 &7815188439619486334
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -130,6 +118,34 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.11280075
   m_Center: {x: 0, y: -0.000000007450581, z: 0}
+--- !u!135 &-6763514821699173925
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 127884}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Center: {x: 0, y: -0.000000007450581, z: 0}
+--- !u!114 &858116383978595504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 127884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe7f4637adb233e4fbeeb57e8985f94a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemData: {fileID: 11400000, guid: a299a04a1fada88448449ce2e287398b, type: 2}
+  minCoin: 10
+  maxCoin: 20
 --- !u!54 &-4871366241575407213
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -146,16 +162,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!135 &-6763514821699173925
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 127884}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1
-  m_Center: {x: 0, y: -0.000000007450581, z: 0}

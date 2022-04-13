@@ -5,19 +5,19 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     bool canPickUp=false;
-
-    void Awake()
-    { 
-    }
-
+    [SerializeField]
+    protected ItemData itemData;
+    public ItemData GetItemData => itemData;
     private void Start() 
     {
         BoundItem();
     }
 
-    private void Update() 
+    private void OnDestroy() 
     {
     }
+
+
     public void BoundItem()
     {
         Vector3 force = new Vector3(Random.Range(-20f, 20f), 50f, Random.Range(-20f, 20f));
@@ -38,6 +38,7 @@ public class Item : MonoBehaviour
 
         if(other.tag == "Player")
         {
+            Debug.Log(this.gameObject.name);
             StartCoroutine(GetItem(other));
             canPickUp=false;
         }
@@ -47,13 +48,13 @@ public class Item : MonoBehaviour
     {
         while(true)
         {
-            if(Vector3.Distance(this.transform.position, other.transform.position) <= 1f)
+            this.transform.position = Vector3.MoveTowards(this.transform.position, other.transform.position,  2f * Time.deltaTime);
+            if(Vector3.Distance(this.transform.position, other.transform.position)<=0.8f)
             {
+                this.GetComponent<IPickUpable>()?.AcquireItem();
                 Destroy(this.gameObject);
                 break;
             }
-            this.transform.position = Vector3.MoveTowards(this.transform.position, other.transform.position,  2f * Time.deltaTime);
-            // this.transform.Translate(other.transform.position * 1f * Time.deltaTime);
             yield return null;
         }
     }

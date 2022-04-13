@@ -91,4 +91,6 @@ public class PlayerInteract : MonoBehaviour
             UIChannel.RaiseSetInven();
         }
     }
+
+    
 }
