@@ -32,9 +32,6 @@ public class QuestManager : MonoBehaviour
     [SerializeField]
     private List<Quest> acceptQuestList = new List<Quest>();
 
-    [SerializeField]
-    private UIChannel UIChannel;
-
     public string latestSelectQuestName{get;set;}
 
     void Awake() 

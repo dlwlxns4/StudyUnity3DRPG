@@ -22,7 +22,14 @@ public class UIChannel : ScriptableObject
     public static AccuireItemEvent OnAcquireItem;
     public delegate void AcquireCoinEvent(int coin);
     public static AcquireCoinEvent OnAcquireCoin;
+    public delegate void OpenShopEvent();
+    public static OpenShopEvent openShop;
 
+    public static void RaiseOpenShop()
+    {
+        openShop?.Invoke();
+    }
+    
     public static void RaiseSetMonsterState(int hp, string name)
     {
         OnSetMonsterState?.Invoke(hp, name);

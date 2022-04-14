@@ -59,4 +59,14 @@ public class Inventory : MonoBehaviour
         Debug.Log(coin);
         goldText.text = $"Gold : {gold}";
     }
+
+    public int GetPossessGold()
+    {
+        return gold;
+    }
+
+    public void SetPossesGold(int gold)
+    {
+        this.gold = gold;
+    }
 }

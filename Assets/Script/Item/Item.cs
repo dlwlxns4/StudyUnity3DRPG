@@ -13,11 +13,6 @@ public class Item : MonoBehaviour
         BoundItem();
     }
 
-    private void OnDestroy() 
-    {
-    }
-
-
     public void BoundItem()
     {
         Vector3 force = new Vector3(Random.Range(-20f, 20f), 50f, Random.Range(-20f, 20f));
