@@ -11,14 +11,18 @@ public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     Image itemImage;
     [SerializeField]
     TextMeshProUGUI CountText;
-    public int Count=0;
-    public ItemData itemData{get;set;}
+    public Item itemData{get;set;}
 
     Image shadowSlotImage;
-
-    public void SetItemImage(ItemData itemData)
+    public int Count
     {
-        itemImage.sprite = itemData.ItemImage;
+        get;
+        set;
+    }
+
+    public void SetItemImage(Item itemData)
+    {
+        itemImage.sprite = itemData.GetItemData.ItemImage;
         this.itemData = itemData;
         IncreaseCount();
     }
@@ -29,14 +33,27 @@ public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         CountText.text = $"{Count}";
     }
 
+    public void DecreaseCount()
+    {
+        Count--;
+        CountText.text = $"{Count}";
+    }
+
+    public void Init()
+    {
+        CountText.text = "";
+        itemData=null;
+        itemImage.sprite=null;
+    }
+
     public void OnBeginDrag(PointerEventData eventData)
     {
-        // if(itemData != null)
-        // {
+        if(itemData != null)
+        {
             shadowSlotImage = Instantiate(itemImage, this.transform.position, Quaternion.identity).GetComponent<Image>();
             shadowSlotImage.rectTransform.sizeDelta = itemImage.rectTransform.sizeDelta/3;
             shadowSlotImage.transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform);
-        // }
+        }
     }
 
     public void OnDrag(PointerEventData eventData)

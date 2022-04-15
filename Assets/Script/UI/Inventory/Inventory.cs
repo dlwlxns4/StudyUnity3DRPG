@@ -19,7 +19,7 @@ public class Inventory : MonoBehaviour, IDragHandler, IPointerDownHandler
     {
         UIChannel.OnSetInven += OpenInventory;
         UIChannel.OnAcquireCoin += AcquireCoin;
-        UIChannel.OnAcquireItem += AcquireItem;
+        UIChannel.OnGetUseItem += GetUseItem;
         itemList = GetComponentsInChildren<ItemSlot>();
         this.gameObject.SetActive(false);
     }
@@ -27,23 +27,41 @@ public class Inventory : MonoBehaviour, IDragHandler, IPointerDownHandler
     void OnDestroy()
     {
         UIChannel.OnSetInven -= OpenInventory;
-        UIChannel.OnAcquireItem -= AcquireItem;
+        UIChannel.OnGetUseItem -= GetUseItem;
         UIChannel.OnAcquireCoin -= AcquireCoin;
     }
 
-    public void AcquireItem(ItemData itemData)
+    public void GetUseItem(Item itemData, bool isGet)
     {
-        foreach(var itemSlot in itemList)
+        if(isGet)
         {
-            if(itemSlot.itemData == null)
+            foreach(var itemSlot in itemList)
             {
-                itemSlot.GetComponent<ItemSlot>().SetItemImage(itemData);
-                return ;
+                if(itemSlot.itemData == null)
+                {
+                    itemSlot.SetItemImage(itemData);
+                    return ;
+                }
+                else if(itemSlot.itemData.GetItemData.ItemCode == itemData.GetItemData.ItemCode )
+                {
+                    itemSlot.IncreaseCount();
+                    return ;
+                }
             }
-            else if(itemSlot.itemData.ItemCode == itemData.ItemCode )
+        }
+        else
+        {
+            foreach(var itemSlot in itemList)
             {
-                itemSlot.GetComponent<ItemSlot>().IncreaseCount();
-                return ;
+                if(itemSlot.itemData == itemData)
+                {
+                    itemSlot.DecreaseCount();
+                    if(itemSlot.Count==0)
+                    {
+                        itemSlot.Init();
+                    }
+                    return ;
+                }
             }
         }
     }

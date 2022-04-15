@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class SaleItemList : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
-    public ItemData itemData{get;set;}
+    public Item itemData{get;set;}
     [SerializeField]
     Image itemImage;
     Image panelImage;

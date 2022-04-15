@@ -15,7 +15,7 @@ public class Item : MonoBehaviour
 
     public void BoundItem()
     {
-        Vector3 force = new Vector3(Random.Range(-20f, 20f), 50f, Random.Range(-20f, 20f));
+        Vector3 force = new Vector3(Random.Range(-20f, 20f), 40f, Random.Range(-20f, 20f));
         this.gameObject.GetComponent<Rigidbody>().AddForce(force, ForceMode.Force);
     }
 

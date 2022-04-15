@@ -15,12 +15,28 @@ public class QuickSlot : MonoBehaviour
         UIChannel.OnSetQuickSlot += SetItem;
     }
 
-    void SetItem(Vector3 pointer, ItemData itemData)
+    void Update() 
+    {
+        if(Input.GetKeyDown(KeyCode.A))
+        {
+            quickSlotsList[0].UseItem();
+        }
+        else if(Input.GetKeyDown(KeyCode.S))
+        {
+            quickSlotsList[1].UseItem();
+        }
+        else if(Input.GetKeyDown(KeyCode.D))
+        {
+            quickSlotsList[2].UseItem();
+        }
+    }
+
+    void SetItem(Vector3 pointer, Item itemData)
     {
         FindQuickSlotNumber(pointer, itemData);
     }
 
-    void FindQuickSlotNumber(Vector3 pointer, ItemData itemData)
+    void FindQuickSlotNumber(Vector3 pointer, Item itemData)
     {
         Vector2 size = new Vector2(45,35);
         foreach(var quickSlotElement in quickSlotsList)
@@ -31,7 +47,7 @@ public class QuickSlot : MonoBehaviour
             {
                 if(position.y - size.y/2 < pointer.y && position.y + size.y/2 > pointer.y)
                 {
-                    quickSlotElement.SetItemImage(itemData.ItemImage);
+                    quickSlotElement.SetData(itemData);
                     break;
                 }
             }

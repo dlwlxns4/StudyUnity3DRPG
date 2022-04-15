@@ -18,13 +18,13 @@ public class UIChannel : ScriptableObject
     public static SpendMpEvent OnSpendMp;
     public delegate void SetInvenEvent();
     public static SetInvenEvent OnSetInven;
-    public delegate void AccuireItemEvent(ItemData item);
-    public static AccuireItemEvent OnAcquireItem;
+    public delegate void GetUseItemEvent(Item item, bool isGet);
+    public static GetUseItemEvent OnGetUseItem;
     public delegate void AcquireCoinEvent(int coin);
     public static AcquireCoinEvent OnAcquireCoin;
     public delegate void OpenShopEvent();
     public static OpenShopEvent openShop;
-    public delegate void SetQuickSlotEvent(Vector3 pointer, ItemData itemData);
+    public delegate void SetQuickSlotEvent(Vector3 pointer, Item itemData);
     public static SetQuickSlotEvent OnSetQuickSlot;
 
     public static void RaiseOpenShop()
@@ -62,9 +62,9 @@ public class UIChannel : ScriptableObject
         OnSetInven?.Invoke();
     }
 
-    public static void RaiseAcquireItem(ItemData itemData)
+    public static void RaiseGetUseItem(Item itemData, bool isGet)
     {
-        OnAcquireItem?.Invoke(itemData);
+        OnGetUseItem?.Invoke(itemData, isGet);
     }
 
     public static void RaiseAccuireCoin(int coin)
@@ -72,7 +72,7 @@ public class UIChannel : ScriptableObject
         OnAcquireCoin?.Invoke(coin);
     }
 
-    public static void RaiseSetQuickSlot(Vector3 pointer, ItemData itemData)
+    public static void RaiseSetQuickSlot(Vector3 pointer, Item itemData)
     {
         OnSetQuickSlot?.Invoke(pointer, itemData);
     }

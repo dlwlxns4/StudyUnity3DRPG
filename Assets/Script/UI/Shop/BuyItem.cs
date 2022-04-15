@@ -6,17 +6,16 @@ public class BuyItem : MonoBehaviour
 {
     [SerializeField]
     Inventory inventory;
-    public ItemData currItem{get;set;}
+    public Item currItem{get;set;}
 
     public void BuyAcquireItem()
     {
-        Debug.Log(currItem);
         int gold = inventory.GetPossessGold();
 
-        if(gold >= currItem.BuyPrice)
+        if(gold >= currItem.GetItemData.BuyPrice)
         {
-            inventory.AcquireItem(currItem);
-            gold-=currItem.BuyPrice;
+            inventory.GetUseItem(currItem, true);
+            gold-=currItem.GetItemData.BuyPrice;
             inventory.SetPossesGold(gold);
         }
 

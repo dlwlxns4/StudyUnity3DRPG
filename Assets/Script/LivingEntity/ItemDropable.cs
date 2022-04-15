@@ -10,7 +10,7 @@ public class ItemDropable : MonoBehaviour
     struct ItemProbability
     {
         [SerializeField]
-        public ItemData itemData;
+        public Item itemData;
         [SerializeField]
         public float probability;
     }
@@ -30,7 +30,7 @@ public class ItemDropable : MonoBehaviour
             {
                 Vector3 dropPosition = this.transform.position;
                 dropPosition.y +=0.8f;
-                GameObject itemObj = Instantiate(item.itemData.ItemPrefab, dropPosition, Quaternion.identity);
+                GameObject itemObj = Instantiate(item.itemData.GetItemData.ItemPrefab, dropPosition, Quaternion.identity);
             }
         }
     }

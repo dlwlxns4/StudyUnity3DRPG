@@ -4922,7 +4922,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4000011650569256}
-  - component: {fileID: 3166118952252416995}
+  - component: {fileID: -1118516930731829848}
   m_Layer: 0
   m_Name: Bottle_Mana
   m_TagString: Untagged
@@ -4946,7 +4946,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3166118952252416995
+--- !u!114 &-1118516930731829848
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4955,7 +4955,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000013317980782}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1ee5e8b53718124c83445e9048291b5, type: 3}
+  m_Script: {fileID: 11500000, guid: e1e951738fe59dd4b9373ff2222c31f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: 77597e6e41300b44092fdd0b0ce0f15d, type: 2}

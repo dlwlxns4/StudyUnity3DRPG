@@ -329,9 +329,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemList:
-  - itemData: {fileID: 11400000, guid: a299a04a1fada88448449ce2e287398b, type: 2}
+  - itemData: {fileID: 858116383978595504, guid: ff0beb77e0c7c0347a18a01cb991713d, type: 3}
     probability: 100
-  - itemData: {fileID: 11400000, guid: b2b4f4f172d34714fa6cf1cb1a4bb47b, type: 2}
+  - itemData: {fileID: 1855939741174987036, guid: d66ebd9d4ef9f7d45add79f6ecb30082, type: 3}
     probability: 50
 --- !u!1 &423929106289526161
 GameObject:

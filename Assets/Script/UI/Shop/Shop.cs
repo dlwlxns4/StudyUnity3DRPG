@@ -29,7 +29,7 @@ public class Shop : MonoBehaviour
     {
         this.gameObject.SetActive(true);
         GridLayoutGroup gridLayout = GetComponentInChildren<GridLayoutGroup>();
-        List<ItemData> saleItemList = npc.GetComponent<SalesItem>().GetItemDataList();
+        List<Item> saleItemList = npc.GetComponent<SalesItem>().GetItemDataList();
         
         cacheState = FlowStateMachine.Instance.CurrentState;
         flowChannel.RaisedFlowStateRequest(dialogueState);
@@ -38,7 +38,7 @@ public class Shop : MonoBehaviour
         foreach(var item in saleItemList)
         {
             GameObject itemList = Instantiate(itemListPrefab, Vector3.zero, Quaternion.identity);
-            itemList.GetComponent<SaleItemList>().SetItemImage(item.ItemImage);
+            itemList.GetComponent<SaleItemList>().SetItemImage(item.GetItemData.ItemImage);
             itemList.GetComponent<SaleItemList>().itemData = item;
             itemList.GetComponent<SaleItemList>().Init(selectPanel);
             itemList.transform.SetParent(gridLayout.transform, false);

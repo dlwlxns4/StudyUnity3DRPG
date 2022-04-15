@@ -9702,7 +9702,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4000010690109084}
-  - component: {fileID: 7532233011952374139}
+  - component: {fileID: -3133089311151229167}
   m_Layer: 0
   m_Name: Bottle_Health
   m_TagString: Untagged
@@ -9726,7 +9726,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7532233011952374139
+--- !u!114 &-3133089311151229167
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9735,7 +9735,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000012970591572}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1ee5e8b53718124c83445e9048291b5, type: 3}
+  m_Script: {fileID: 11500000, guid: aaf038fd88be86a4e85f0ab3497ec2b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: 3ca6e1f33c7bcb44a8717e7bc4c6a2ed, type: 2}

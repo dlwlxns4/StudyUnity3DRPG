@@ -6,6 +6,6 @@ public class BasicItem : Item, IPickUpable
 {
     public void AcquireItem()
     {
-        UIChannel.RaiseAcquireItem(itemData);
+        UIChannel.RaiseGetUseItem(this, true);
     }
 }

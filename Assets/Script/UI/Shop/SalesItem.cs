@@ -5,9 +5,9 @@ using UnityEngine;
 public class SalesItem : MonoBehaviour
 {
     [SerializeField]
-    List<ItemData> itemDataList = new List<ItemData>(); 
+    List<Item> itemDataList = new List<Item>(); 
 
-    public List<ItemData> GetItemDataList()
+    public List<Item> GetItemDataList()
     {
         return itemDataList; 
     }
