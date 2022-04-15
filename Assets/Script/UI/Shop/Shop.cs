@@ -9,11 +9,20 @@ public class Shop : MonoBehaviour
     GameObject itemListPrefab;
     [SerializeField]
     GameObject selectPanel;
+    [SerializeField]
+    List<GameObject> itemsList;
+    [SerializeField]
+    FlowChannel flowChannel;
+    [SerializeField]
+    FlowState dialogueState;
+    [SerializeField]
+    FlowState cacheState;
+    [SerializeField]
+    GameObject inventory;
 
-    void Awake()
+    void Update() 
     {
-        
-
+        CloseShop();
     }
 
     public void OpenShop(GameObject npc)
@@ -21,6 +30,10 @@ public class Shop : MonoBehaviour
         this.gameObject.SetActive(true);
         GridLayoutGroup gridLayout = GetComponentInChildren<GridLayoutGroup>();
         List<ItemData> saleItemList = npc.GetComponent<SalesItem>().GetItemDataList();
+        
+        cacheState = FlowStateMachine.Instance.CurrentState;
+        flowChannel.RaisedFlowStateRequest(dialogueState);
+        inventory.SetActive(true);
 
         foreach(var item in saleItemList)
         {
@@ -29,7 +42,25 @@ public class Shop : MonoBehaviour
             itemList.GetComponent<SaleItemList>().itemData = item;
             itemList.GetComponent<SaleItemList>().Init(selectPanel);
             itemList.transform.SetParent(gridLayout.transform, false);
+
+            itemsList.Add(itemList);
         }
     }
 
+
+    public void CloseShop()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            foreach(var item in itemsList)
+            {
+                Destroy(item);
+            }
+            inventory.SetActive(false);
+
+            itemsList.Clear();
+            flowChannel.RaisedFlowStateRequest(cacheState);
+            this.gameObject.SetActive(false);
+        }
+    }
 }

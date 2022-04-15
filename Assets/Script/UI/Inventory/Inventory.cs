@@ -40,7 +40,7 @@ public class Inventory : MonoBehaviour
                 itemSlot.GetComponent<ItemSlot>().SetItemImage(itemData);
                 return ;
             }
-            else
+            else if(itemSlot.itemData.ItemCode == itemData.ItemCode )
             {
                 itemSlot.GetComponent<ItemSlot>().IncreaseCount();
                 return ;
@@ -68,5 +68,6 @@ public class Inventory : MonoBehaviour
     public void SetPossesGold(int gold)
     {
         this.gold = gold;
+        goldText.text=$"{this.gold}";
     }
 }
