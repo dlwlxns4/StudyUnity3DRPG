@@ -53,4 +53,10 @@ public class Item : MonoBehaviour
             yield return null;
         }
     }
+
+    public void DropItem()
+    {
+        return ;
+    }
+
 }

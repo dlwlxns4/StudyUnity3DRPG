@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
-public class Inventory : MonoBehaviour
+public class Inventory : MonoBehaviour, IDragHandler, IPointerDownHandler
 {
     [SerializeField]
     int gold;
@@ -13,6 +11,9 @@ public class Inventory : MonoBehaviour
 
     [SerializeField]
     ItemSlot[] itemList = new ItemSlot[20];
+    RectTransform rectTransform;
+
+    Vector2 downPosition;
 
     // Start is called before the first frame update
     void Awake()
@@ -21,6 +22,7 @@ public class Inventory : MonoBehaviour
         UIChannel.OnAcquireCoin += AcquireCoin;
         UIChannel.OnAcquireItem += AcquireItem;
         itemList = GetComponentsInChildren<ItemSlot>();
+        rectTransform = GetComponent<RectTransform>();
         this.gameObject.SetActive(false);
     }
 
@@ -69,5 +71,18 @@ public class Inventory : MonoBehaviour
     {
         this.gold = gold;
         goldText.text=$"{this.gold}";
+    }
+
+    void IDragHandler.OnDrag(PointerEventData eventData)
+    {
+        
+        Vector3 offset = eventData.position - downPosition;
+        downPosition = eventData.position;
+        this.gameObject.transform.position += offset;
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        downPosition = eventData.position;
     }
 }
