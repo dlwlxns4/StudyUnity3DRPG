@@ -33,7 +33,9 @@ public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     {
         // if(itemData != null)
         // {
-            shadowSlotImage = Instantiate(this.gameObject, this.transform.position, Quaternion.identity).GetComponent<Image>();
+            shadowSlotImage = Instantiate(itemImage, this.transform.position, Quaternion.identity).GetComponent<Image>();
+            shadowSlotImage.rectTransform.sizeDelta = itemImage.rectTransform.sizeDelta/3;
+            shadowSlotImage.transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform);
         // }
     }
 
@@ -44,7 +46,7 @@ public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        // Destroy(shadowSlotObject);
-        Debug.Log("드래그 끝" + eventData.position);
+        Destroy(shadowSlotImage.gameObject);
+        UIChannel.RaiseSetQuickSlot(eventData.position, itemData);
     }
 }

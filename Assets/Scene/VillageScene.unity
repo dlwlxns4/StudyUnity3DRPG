@@ -54605,6 +54605,7 @@ GameObject:
   - component: {fileID: 1251758204}
   - component: {fileID: 1251758206}
   - component: {fileID: 1251758205}
+  - component: {fileID: 1251758207}
   m_Layer: 5
   m_Name: Panel (1)
   m_TagString: Untagged
@@ -54669,6 +54670,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1251758203}
   m_CullTransparentMesh: 1
+--- !u!114 &1251758207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1251758203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a153cef2427d5664b9aefec5f99b1fd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1254492348
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -56897,7 +56910,7 @@ GameObject:
   - component: {fileID: 1300239638}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: Canvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75248,6 +75261,7 @@ GameObject:
   - component: {fileID: 1762304467}
   - component: {fileID: 1762304469}
   - component: {fileID: 1762304468}
+  - component: {fileID: 1762304470}
   m_Layer: 5
   m_Name: Panel (2)
   m_TagString: Untagged
@@ -75312,6 +75326,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1762304466}
   m_CullTransparentMesh: 1
+--- !u!114 &1762304470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1762304466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a153cef2427d5664b9aefec5f99b1fd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1762597516
 GameObject:
   m_ObjectHideFlags: 0
@@ -76583,6 +76609,7 @@ GameObject:
   - component: {fileID: 1802675268}
   - component: {fileID: 1802675267}
   - component: {fileID: 1802675269}
+  - component: {fileID: 1802675270}
   m_Layer: 5
   m_Name: QuickSlot
   m_TagString: Untagged
@@ -76674,6 +76701,18 @@ MonoBehaviour:
   m_Spacing: {x: 20, y: 10}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!114 &1802675270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1802675265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64bc540724ced97448533e113c9d3291, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1803198731
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -79233,6 +79272,7 @@ GameObject:
   - component: {fileID: 1874356449}
   - component: {fileID: 1874356451}
   - component: {fileID: 1874356450}
+  - component: {fileID: 1874356452}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -79297,6 +79337,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1874356448}
   m_CullTransparentMesh: 1
+--- !u!114 &1874356452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1874356448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a153cef2427d5664b9aefec5f99b1fd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1874971502 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8680173174155540286, guid: bebc11d26168c0046b967074c835336f, type: 3}

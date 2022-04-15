@@ -11,7 +11,6 @@ public class Inventory : MonoBehaviour, IDragHandler, IPointerDownHandler
 
     [SerializeField]
     ItemSlot[] itemList = new ItemSlot[20];
-    RectTransform rectTransform;
 
     Vector2 downPosition;
 
@@ -22,7 +21,6 @@ public class Inventory : MonoBehaviour, IDragHandler, IPointerDownHandler
         UIChannel.OnAcquireCoin += AcquireCoin;
         UIChannel.OnAcquireItem += AcquireItem;
         itemList = GetComponentsInChildren<ItemSlot>();
-        rectTransform = GetComponent<RectTransform>();
         this.gameObject.SetActive(false);
     }
 
@@ -75,7 +73,6 @@ public class Inventory : MonoBehaviour, IDragHandler, IPointerDownHandler
 
     void IDragHandler.OnDrag(PointerEventData eventData)
     {
-        
         Vector3 offset = eventData.position - downPosition;
         downPosition = eventData.position;
         this.gameObject.transform.position += offset;
