@@ -46,6 +46,13 @@ public class MpManager : MonoBehaviour
 
     void SpendMp(int spendMp)
     {
+        if(spendMp == 0)
+        {
+            mpText.text = $"{playerStatus.RemainMp}";
+            effectMp = playerStatus.RemainMp;
+            return;
+        }
+
         playerStatus.RemainMp -= spendMp;
         if(playerStatus.RemainMp < 0)
         {

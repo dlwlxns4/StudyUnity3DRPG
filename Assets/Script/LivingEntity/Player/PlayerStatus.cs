@@ -70,12 +70,14 @@ public class PlayerStatus : MonoBehaviour
         AbilityPoint--;
         maxHp +=10;
         remainHp +=10;
+        levlUpEvent.Invoke(Level, AbilityPoint);
     }
 
     public void IncreaseStrength()
     {
         AbilityPoint--;
         strength+=1;
+        levlUpEvent.Invoke(Level, AbilityPoint);
     }
 
     public void IncreaseMp()
@@ -83,5 +85,7 @@ public class PlayerStatus : MonoBehaviour
         AbilityPoint--;
         maxMp+=2;
         RemainMp+=2;
+        UIChannel.RaiseSetMpState(0);
+        levlUpEvent.Invoke(Level, AbilityPoint);
     }
 }
