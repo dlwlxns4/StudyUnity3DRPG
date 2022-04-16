@@ -64,6 +64,6 @@ public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     public void OnEndDrag(PointerEventData eventData)
     {
         Destroy(shadowSlotImage.gameObject);
-        UIChannel.RaiseSetQuickSlot(eventData.position, itemData);
+        UIChannel.RaiseSetQuickSlot(eventData.position, this);
     }
 }

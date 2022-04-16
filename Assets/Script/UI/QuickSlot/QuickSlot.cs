@@ -31,23 +31,22 @@ public class QuickSlot : MonoBehaviour
         }
     }
 
-    void SetItem(Vector3 pointer, Item itemData)
+    void SetItem(Vector3 pointer, ItemSlot itemSlot)
     {
-        FindQuickSlotNumber(pointer, itemData);
+        FindQuickSlotNumber(pointer, itemSlot);
     }
 
-    void FindQuickSlotNumber(Vector3 pointer, Item itemData)
+    void FindQuickSlotNumber(Vector3 pointer, ItemSlot itemSlot)
     {
         Vector2 size = new Vector2(45,35);
         foreach(var quickSlotElement in quickSlotsList)
         {
-
             Vector2 position = quickSlotElement.GetComponent<RectTransform>().position;
             if(position.x - size.x/2 < pointer.x && position.x + size.x/2 > pointer.x)
             {
                 if(position.y - size.y/2 < pointer.y && position.y + size.y/2 > pointer.y)
                 {
-                    quickSlotElement.SetData(itemData);
+                    quickSlotElement.SetData(itemSlot);
                     break;
                 }
             }

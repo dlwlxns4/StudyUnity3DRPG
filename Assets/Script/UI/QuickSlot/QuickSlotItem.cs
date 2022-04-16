@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using UnityEngine.EventSystems;
 
 public class QuickSlotItem : MonoBehaviour, IPointerClickHandler
@@ -9,22 +10,36 @@ public class QuickSlotItem : MonoBehaviour, IPointerClickHandler
     [SerializeField]
     Image itemImage;
     Item itemData;
+    ItemSlot itemSlot;
+    TextMeshProUGUI countText;
 
-    void Start()
+    void Awake()
     {
-        
+        countText = GetComponentInChildren<TextMeshProUGUI>();
     }
 
-    public void SetData(Item itemData)
+    public void SetData(ItemSlot itemSlot)
     {
-        itemImage.sprite = itemData.GetItemData.ItemImage;
-        this.itemData = itemData;
+        itemImage.sprite = itemSlot.itemData.GetItemData.ItemImage;
+        this.itemSlot = itemSlot;
+        countText.text=$"{itemSlot.Count}";
         itemImage.color = new Color(1f, 1f, 1f, 1f);
     }
 
     public void UseItem()
     {
-        itemData?.GetComponent<IUsable>()?.UseItem();
+        itemSlot?.itemData.GetComponent<IUsable>()?.UseItem();
+        if(itemSlot?.Count!=0)
+        {
+            countText.text = $"{itemSlot?.Count}";
+        }
+        else
+        {
+            countText.text = "";
+            itemImage.sprite=null;
+            itemImage.color = new Color(1f,1f,1f,0f);
+            this.itemSlot=null;
+        }
     }
 
     public void OnPointerClick(PointerEventData eventData)
