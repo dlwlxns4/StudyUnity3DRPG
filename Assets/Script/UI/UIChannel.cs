@@ -24,6 +24,8 @@ public class UIChannel : ScriptableObject
     public static AcquireCoinEvent OnAcquireCoin;
     public delegate void OpenShopEvent();
     public static OpenShopEvent openShop;
+    public delegate void OpenStatusEvent();
+    public static OpenShopEvent openStatus;
     public delegate void SetQuickSlotEvent(Vector3 pointer, ItemSlot itemSlot);
     public static SetQuickSlotEvent OnSetQuickSlot;
 
@@ -76,4 +78,9 @@ public class UIChannel : ScriptableObject
     {
         OnSetQuickSlot?.Invoke(pointer, itemSlot);
     }
+
+    public static void RaiseStatusPanel()
+    {
+        openStatus?.Invoke();
+    } 
 }

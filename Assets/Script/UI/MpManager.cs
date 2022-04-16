@@ -10,7 +10,7 @@ public class MpManager : MonoBehaviour
     public delegate void SetMpEvent();
     public SetMpEvent SetMp;
     [SerializeField]
-    PlayerState playerState;
+    PlayerStatus playerStatus;
     public float MpRecoveryDelay{get;set;}
 
     void Start()
@@ -18,13 +18,13 @@ public class MpManager : MonoBehaviour
         mpImage = GetComponent<Image>();
         mpText = GetComponentInChildren<Text>();
         UIChannel.OnSpendMp += SpendMp;
-        effectMp = playerState.MaxMp;
+        effectMp = playerStatus.MaxMp;
         MpRecoveryDelay = 1;
     }
 
     void Update()
     {
-        if(playerState.RemainMp == playerState.MaxMp)
+        if(playerStatus.RemainMp == playerStatus.MaxMp)
         {
             return;
         }
@@ -33,8 +33,8 @@ public class MpManager : MonoBehaviour
         if(MpRecoveryDelay <=0)
         {
             MpRecoveryDelay=1;
-            playerState.RemainMp +=1;
-            mpText.text = $"{playerState.RemainMp}";
+            playerStatus.RemainMp +=1;
+            mpText.text = $"{playerStatus.RemainMp}";
             StartCoroutine(FillMpEffect());
         }
     }
@@ -46,20 +46,20 @@ public class MpManager : MonoBehaviour
 
     void SpendMp(int spendMp)
     {
-        playerState.RemainMp -= spendMp;
-        if(playerState.RemainMp < 0)
+        playerStatus.RemainMp -= spendMp;
+        if(playerStatus.RemainMp < 0)
         {
-            playerState.RemainMp = 0;
+            playerStatus.RemainMp = 0;
         }
-        mpText.text = $"{playerState.RemainMp}";
+        mpText.text = $"{playerStatus.RemainMp}";
         StartCoroutine(SpendMpEffect());
     }
 
     IEnumerator SpendMpEffect()
     {
-        while(effectMp >= playerState.RemainMp)
+        while(effectMp >= playerStatus.RemainMp)
         {
-            mpImage.fillAmount =  effectMp / playerState.MaxMp;
+            mpImage.fillAmount =  effectMp / playerStatus.MaxMp;
             effectMp -= 0.2f;
             yield return new WaitForSeconds(0.01f);
         }
@@ -67,9 +67,9 @@ public class MpManager : MonoBehaviour
 
     IEnumerator FillMpEffect()
     {
-        while(effectMp <= playerState.RemainMp)
+        while(effectMp <= playerStatus.RemainMp)
         {
-            mpImage.fillAmount =  effectMp / playerState.MaxMp;
+            mpImage.fillAmount =  effectMp / playerStatus.MaxMp;
             effectMp += 0.2f;
             yield return new WaitForSeconds(0.01f);
         }

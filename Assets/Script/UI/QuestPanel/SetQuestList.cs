@@ -41,6 +41,11 @@ public class SetQuestList : MonoBehaviour
         
     }
 
+    public void OpenPanel()
+    {
+        this.gameObject.SetActive(!this.gameObject.activeSelf);
+    }
+
     private void SetOnQuestList(string questName)
     {
         GameObject questList = Instantiate(questListPrefab, Vector3.zero, Quaternion.identity);

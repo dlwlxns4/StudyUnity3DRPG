@@ -12,13 +12,13 @@ public class PlayerRoll : MonoBehaviour
     private FlowChannel flowChannel;
     [SerializeField]
     private FlowState rollState;
-    private PlayerState playerState;
+    private PlayerStatus playerState;
     void Start()
     {
         playerInput = GetComponent<PlayerInput>();
         animator = GetComponent<Animator>();
         playerRigidbody = GetComponent<Rigidbody>();
-        playerState = GetComponent<PlayerState>();
+        playerState = GetComponent<PlayerStatus>();
     }
 
     // Update is called once per frame

@@ -313,6 +313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3f431c956535c94da52affe20516600, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exp: 2
   material: {fileID: 2100000, guid: c1a31b6c8311a4a4aa08a5d67d47afee, type: 2}
   flickerMaterial: {fileID: 2100000, guid: 28a0ec0f3d6151d499ba65a25763debb, type: 2}
   meshRenderer: {fileID: 0}

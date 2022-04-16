@@ -32,6 +32,7 @@ public class PlayerInteract : MonoBehaviour
         InteractNPC();
         SetOnQuestPanel();
         SetOnInventory();
+        SetOnStatus();
     }
     
     private void OnTriggerEnter(Collider other)
@@ -92,5 +93,11 @@ public class PlayerInteract : MonoBehaviour
         }
     }
 
-    
+    public void SetOnStatus()
+    {
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            UIChannel.RaiseStatusPanel();
+        }
+    }
 }

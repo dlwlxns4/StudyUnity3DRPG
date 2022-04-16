@@ -11,6 +11,9 @@ public abstract class LivingEntity : MonoBehaviour
     public string MonsterName{get;set;}
     public int ObjectId{get;set;}
     [SerializeField]
+    int exp;
+    public int Exp{get{return exp;}set{exp=value;}}
+    [SerializeField]
     Material material;
     [SerializeField]
     Material flickerMaterial;
@@ -36,6 +39,7 @@ public abstract class LivingEntity : MonoBehaviour
         if(RemainHp <= 0 )
         {
             Die();
+            PlayerChannel.RaiseGetExpEvent(exp);
             this.GetComponent<ItemDropable>()?.DropItem();
         }
     }
