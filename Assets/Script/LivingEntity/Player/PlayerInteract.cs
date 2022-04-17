@@ -42,6 +42,7 @@ public class PlayerInteract : MonoBehaviour
         {
             nearByInteractableObj.Add(interactable);
             interactInfoPanel.SetActive(true);
+            interactInfoPanel.GetComponent<InteractPanel>().SetText(other.name);
         }
     }
 
@@ -54,7 +55,7 @@ public class PlayerInteract : MonoBehaviour
 
             if(nearByInteractableObj.Count == 0 )
             {
-                interactInfoPanel.SetActive(false);
+                interactInfoPanel.GetComponent<InteractPanel>().DisableAnimation(null);
             }
         }
     }

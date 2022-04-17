@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 using System.Linq;
+using System.Collections;
 using System.Collections.Generic;
 
 public class UIDialogueController : MonoBehaviour, DialogueNodeVisitor
@@ -29,12 +29,14 @@ public class UIDialogueController : MonoBehaviour, DialogueNodeVisitor
     private int currSelectNode=-1;
 
     const string isQuest = "퀘스트";
+    Animator animator;
     void Awake()
     {
         dialogueChannel.OnDialogueNodeStart += OnDialogueNodeStart;
         dialogueChannel.OnDialogueNodeEnd += OnDialogueNodeEnd;
         gameObject.SetActive(false);
         choiceBoxTransform.gameObject.SetActive(false);
+        animator=GetComponent<Animator>();
     }
 
     private void OnDestroy() {
@@ -85,6 +87,7 @@ public class UIDialogueController : MonoBehaviour, DialogueNodeVisitor
     private void OnDialogueNodeStart(DialogueNode node)
     {
         gameObject.SetActive(true);
+        animator.Play("Enable");
 
         string textString = node.DialogueLine.Text;
         textString = textString.Replace("\\n", "\n");
@@ -106,10 +109,14 @@ public class UIDialogueController : MonoBehaviour, DialogueNodeVisitor
             Destroy(child.gameObject);
         }
 
-        gameObject.SetActive(false);
+        if(node == null)
+        {
+            animator.Play("Disable");
+        }
         choiceBoxTransform.gameObject.SetActive(false);
         currSelectNode=-1;
         choiceNodeList.Clear();
+
     }
 
     public void Visit(BasicDialogueNode node)
@@ -180,5 +187,10 @@ public class UIDialogueController : MonoBehaviour, DialogueNodeVisitor
             back.ChoiceNode = null;
             choiceNode.CanChoiceNodes.Add(back);
         }
+    }
+
+    public void SetActiveFalse()
+    {
+        gameObject.SetActive(false);
     }
 }

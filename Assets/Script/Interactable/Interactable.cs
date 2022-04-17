@@ -4,7 +4,7 @@ using UnityEngine.Events;
 public class Interactable : MonoBehaviour
 {
     [SerializeField]
-    UnityEvent OnInteraction;
+    public UnityEvent OnInteraction;
     [SerializeField]
     private int objectID;
 

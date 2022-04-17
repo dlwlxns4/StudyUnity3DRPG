@@ -23,5 +23,12 @@ public class Portal : MonoBehaviour
         player = GameObject.FindWithTag("Player");
     }
     
+    IEnumerator FadeOut()
+    {
+        while(true)
+        {
+            yield return new WaitForSeconds(0.1f);
+        }
+    }
 }
 
