@@ -231,8 +231,8 @@ GameObject:
   - component: {fileID: 423929106289278853}
   - component: {fileID: 423929106296950143}
   - component: {fileID: 423929106287453511}
-  - component: {fileID: 423929106289458498}
   - component: {fileID: 423929106289458499}
+  - component: {fileID: -189945364565890257}
   - component: {fileID: -1058993110579204754}
   m_Layer: 0
   m_Name: mushroom_Monster
@@ -289,18 +289,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.4, y: 0.46, z: 0.4}
   m_Center: {x: 0, y: 0.26, z: 0.01}
---- !u!114 &423929106289458498
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 423929106289458501}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c18c9a46b05aad499c02c1f1d0e1826, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &423929106289458499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -314,9 +302,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exp: 2
-  material: {fileID: 2100000, guid: c1a31b6c8311a4a4aa08a5d67d47afee, type: 2}
   flickerMaterial: {fileID: 2100000, guid: 28a0ec0f3d6151d499ba65a25763debb, type: 2}
-  meshRenderer: {fileID: 0}
+--- !u!195 &-189945364565890257
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423929106289458501}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 1
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 300
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!114 &-1058993110579204754
 MonoBehaviour:
   m_ObjectHideFlags: 0

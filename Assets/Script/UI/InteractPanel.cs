@@ -14,6 +14,7 @@ public class InteractPanel : MonoBehaviour
         dialogueChannel.OnDialogueStart += SetOffPanel;
         dialogueChannel.OnDialogueEnd += DisableAnimation;
         nameText = GetComponentInChildren<Text>();
+        gameObject.SetActive(false);
     }
 
      void OnEnable() 

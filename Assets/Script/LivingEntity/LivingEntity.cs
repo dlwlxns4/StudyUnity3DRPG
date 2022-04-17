@@ -13,17 +13,20 @@ public abstract class LivingEntity : MonoBehaviour
     [SerializeField]
     int exp;
     public int Exp{get{return exp;}set{exp=value;}}
+    public Vector3 HomePos{get;set;}
+    protected Material cacheMaterial;
     [SerializeField]
-    Material material;
-    [SerializeField]
-    Material flickerMaterial;
-    protected UIChannel uiChannel;
-    [SerializeField]
+    protected Material flickerMaterial;
     private SkinnedMeshRenderer meshRenderer;
 
     private void Awake() 
     {
         meshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
+        cacheMaterial = meshRenderer.material;
+        if(meshRenderer == null)
+        {
+            Debug.Log("ㅁ?ㄹ");
+        }
     }
 
     public virtual void OnDamaged(int damagedFigure)
@@ -38,6 +41,7 @@ public abstract class LivingEntity : MonoBehaviour
         StartCoroutine(MaterialFlicker());
         if(RemainHp <= 0 )
         {
+            GetComponent<Animator>().SetBool("IsDie", true);
             Die();
             PlayerChannel.RaiseGetExpEvent(exp);
             this.GetComponent<ItemDropable>()?.DropItem();
@@ -64,12 +68,15 @@ public abstract class LivingEntity : MonoBehaviour
         this.transform.position=spawnPosition;
         this.GetComponent<BoxCollider>().enabled = true;
         this.gameObject.SetActive(true);
+        HomePos = spawnPosition;
     }
 
     IEnumerator MaterialFlicker()
     {
+        cacheMaterial = meshRenderer.material;
         meshRenderer.material = flickerMaterial;
         yield return new WaitForSeconds(0.05f);
-        meshRenderer.material = material;
+        meshRenderer.material = cacheMaterial;
     }
+
 }

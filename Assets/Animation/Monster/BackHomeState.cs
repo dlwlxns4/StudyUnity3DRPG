@@ -4,29 +4,17 @@ using UnityEngine;
 
 public class BackHomeState : StateMachineBehaviour
 {
-    Transform enemyTransform;
-    Enemy enemy;
+    IMovable movable;
+    Vector3 homePos;
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-       enemyTransform = animator.GetComponent<Transform>();
-       enemy = animator.GetComponent<Enemy>();
+        homePos = animator.GetComponent<LivingEntity>().HomePos;
+        movable = animator.GetComponent<IMovable>();
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        enemyTransform.position = Vector3.MoveTowards(enemyTransform.position, enemy.GetBornedPosition(), Time.deltaTime *2f);
-        enemyTransform.rotation = Quaternion.Lerp(enemyTransform.rotation, Quaternion.LookRotation(enemy.GetBornedPosition() - enemyTransform.position), Time.deltaTime * 5f);
-
-        if(Vector3.Distance(enemyTransform.position, enemy.GetTargetTransform().position) <= 4f )
-        {
-            animator.SetBool("IsFollow", true);
-        }
-
-        if(enemyTransform.position == enemy.GetBornedPosition())
-        {
-            animator.SetBool("IsFollow", false);
-            animator.SetBool("IsBack", false);
-        }
+        movable?.GoHome(homePos);
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

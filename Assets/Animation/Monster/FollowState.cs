@@ -4,29 +4,15 @@ using UnityEngine;
 
 public class FollowState : StateMachineBehaviour
 {
-    protected Transform enemyTransform;
-    protected Enemy enemy;
-    [SerializeField]
-    protected float moveSpeed;
-    [SerializeField]
-    protected float targetDistance;
-
+    IMovable movable;
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-       enemyTransform = animator.GetComponent<Transform>();
-       enemy = animator.GetComponent<Enemy>();
+        movable = animator.GetComponent<IMovable>();
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        enemyTransform.position = Vector3.MoveTowards(enemyTransform.position, enemy.GetTargetTransform().position, Time.deltaTime * moveSpeed);
-        enemyTransform.rotation = Quaternion.Lerp(enemyTransform.rotation, Quaternion.LookRotation(enemy.GetTargetTransform().position - enemyTransform.position), Time.deltaTime * 5f);
-
-        if(Vector3.Distance(enemyTransform.position, enemy.GetTargetTransform().position) < targetDistance )
-        {
-            animator.SetBool("IsReady", true);
-            animator.SetBool("IsFollow",false);
-        }
+        movable?.Chase();
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

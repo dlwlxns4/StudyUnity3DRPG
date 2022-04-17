@@ -4,21 +4,16 @@ using UnityEngine;
 
 public class IdleState : StateMachineBehaviour
 {
-    Transform enemyTransform;
-    Enemy enemy;
+    IMovable movable;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-       enemyTransform = animator.GetComponent<Transform>();
-       enemy = animator.GetComponent<Enemy>();
+       movable = animator.GetComponent<IMovable>();
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if(Vector3.Distance(enemyTransform.position, enemy.GetTargetTransform().position) <= 4f )
-        {
-            animator.SetBool("IsFollow", true);
-        }
+        movable?.CanMove();
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
