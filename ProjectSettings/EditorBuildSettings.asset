@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scene/OutOfTown.unity
     guid: 370b53f067350434d8108d4e5267125d
+  - enabled: 1
+    path: Assets/Scene/TopMountain.unity
+    guid: 3b1efa68c720dd84fa796617b09a6162
   m_configObjects: {}

@@ -114,7 +114,7 @@ public class Mushroom : LivingEntity, IMovable, IAttackable
     {
         navMesh.velocity = Vector3.zero;
         attackDelay+=Time.deltaTime;
-        if(attackDelay>=2f)
+        if(attackDelay>=1f)
         {
             animator.SetBool("IsAttack", true);
             animator.SetBool("IsReady", false);

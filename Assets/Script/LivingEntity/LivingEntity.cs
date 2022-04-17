@@ -23,10 +23,6 @@ public abstract class LivingEntity : MonoBehaviour
     {
         meshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
         cacheMaterial = meshRenderer.material;
-        if(meshRenderer == null)
-        {
-            Debug.Log("ㅁ?ㄹ");
-        }
     }
 
     public virtual void OnDamaged(int damagedFigure)
@@ -37,7 +33,7 @@ public abstract class LivingEntity : MonoBehaviour
         }
 
         RemainHp -= damagedFigure;
-        UIChannel.RaiseSetMonsterState(RemainHp, MonsterName);
+        UIChannel.RaiseSetMonsterState(this);
         StartCoroutine(MaterialFlicker());
         if(RemainHp <= 0 )
         {

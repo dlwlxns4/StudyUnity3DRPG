@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Druyd : LivingEntity, IBasicAttack, IAoeAttack
+public class Druyd : LivingEntity, IAttackable, IMovable, IBasicAttack, IAoeAttack
 {
 
     private Animator animator;
@@ -70,5 +70,35 @@ public class Druyd : LivingEntity, IBasicAttack, IAoeAttack
     {
         yield return new WaitForSeconds(1.5f);
          Instantiate(pillarBlastPrefab, transform, Quaternion.identity);
+    }
+
+    public void Move()
+    {
+        // throw new System.NotImplementedException();
+    }
+
+    public void CanMove()
+    {
+        // throw new System.NotImplementedException();
+    }
+
+    public void Chase()
+    {
+        // throw new System.NotImplementedException();
+    }
+
+    public void GoHome(Vector3 homePos)
+    {
+        // throw new System.NotImplementedException();
+    }
+
+    void IAttackable.AttackReady()
+    {
+        // throw new System.NotImplementedException();
+    }
+
+    void IAttackable.Attack()
+    {
+        throw new System.NotImplementedException();
     }
 }

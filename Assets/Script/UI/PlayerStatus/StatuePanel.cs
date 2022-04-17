@@ -28,7 +28,7 @@ public class StatuePanel : MonoBehaviour
         ApText.text = $"Point. {Ap}";
     }
 
-    void OpenStatus()
+    public void OpenStatus()
     {
         this.gameObject.SetActive(!this.gameObject.activeSelf);
     }

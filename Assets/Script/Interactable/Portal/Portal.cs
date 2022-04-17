@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Portal : MonoBehaviour
 {
@@ -11,24 +12,36 @@ public class Portal : MonoBehaviour
     private GameObject player;
     [SerializeField]
     private Vector3 movePosition;
-    
+    [SerializeField]
+    Image image;
+
     public void DoPortal()
     {
-        SceneManager.LoadScene(sceneNumber);
-        player.transform.position = movePosition;
+        StartCoroutine(FadeOut());
     }
 
     void Awake()   
     {
         player = GameObject.FindWithTag("Player");
+        image = GameObject.FindGameObjectWithTag("Canvas").transform.Find("FadePanel").GetComponent<Image>();
     }
     
     IEnumerator FadeOut()
     {
-        while(true)
+        Color opacity = image.color;
+        while(opacity.a <=1f)
         {
+            opacity.a += 0.1f;
+            image.color= opacity;
             yield return new WaitForSeconds(0.1f);
         }
+        
+        SceneManager.LoadScene(sceneNumber);
+        player.transform.position = movePosition;
+        CameraChannel.RaiseFollowPlayer(player.transform.position);
+        image.GetComponent<SceneEffect>().FadeIn();
     }
+
+
 }
 

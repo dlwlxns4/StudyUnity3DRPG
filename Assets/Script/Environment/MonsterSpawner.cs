@@ -35,7 +35,6 @@ public class MonsterSpawner : MonoBehaviour
             if(monster.activeSelf == false)
             {
                 monster.GetComponent<LivingEntity>().Respawn(this.transform.position, resapwnDistance);
-                Debug.Log(monster.GetComponent<LivingEntity>().HomePos);
             }
         }
     }

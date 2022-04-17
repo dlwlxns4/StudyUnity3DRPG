@@ -16,6 +16,7 @@ public class FollowCamEffector : MonoBehaviour
     void Awake()
     {
         CameraChannel.OnshakeCamera += ShakeCamera;
+        CameraChannel.OnFollowPlayer += FollowPlayer;
         virtualCameraNoise = virtualCamera.GetCinemachineComponent<Cinemachine.CinemachineBasicMultiChannelPerlin>();
     }
 
@@ -27,6 +28,11 @@ public class FollowCamEffector : MonoBehaviour
     void ShakeCamera()
     {
         StartCoroutine(ShakeCameraCoroutine());
+    }
+
+    void FollowPlayer(Vector3 target)
+    {
+        this.transform.position = target;
     }
 
     IEnumerator ShakeCameraCoroutine()

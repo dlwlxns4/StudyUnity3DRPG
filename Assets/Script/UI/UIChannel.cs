@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "ScriptableObjects/UI/UIChannel")]
 public class UIChannel : ScriptableObject
 {
-    public delegate void SetMonsterState(int hp, string name);
+    public delegate void SetMonsterState(LivingEntity livingEntity);
     public static SetMonsterState OnSetMonsterState;
 
     public delegate void SetQuestOnUI(string questName);
@@ -34,9 +34,9 @@ public class UIChannel : ScriptableObject
         openShop?.Invoke();
     }
     
-    public static void RaiseSetMonsterState(int hp, string name)
+    public static void RaiseSetMonsterState(LivingEntity livingEntity)
     {
-        OnSetMonsterState?.Invoke(hp, name);
+        OnSetMonsterState?.Invoke(livingEntity);
     }
 
     public static void RaiseSetQuestOnUI(string questName)

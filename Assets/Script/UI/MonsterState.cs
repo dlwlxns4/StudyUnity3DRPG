@@ -13,11 +13,12 @@ public class MonsterState : MonoBehaviour
 
     public bool isDamaged=false;
 
-    [SerializeField]
-    private UIChannel uiChannel; 
+    Animator animator;
+    LivingEntity LivingEntity;
 
     void Awake()
     {
+        animator = GetComponent<Animator>();
         UIChannel.OnSetMonsterState += SetState;
         this.gameObject.SetActive(false);
     }
@@ -26,16 +27,25 @@ public class MonsterState : MonoBehaviour
         UIChannel.OnSetMonsterState -= SetState;
     }
 
-    private void SetState(int remainHp, string name)
+    private void OnEnable() 
     {
+        animator.Play("Enable");
+    }
+
+    private void SetState(LivingEntity livingEntity)
+    {
+        if(this.LivingEntity != livingEntity)
+        {
+        }
         if(this.gameObject.activeSelf == false)
         {
             this.gameObject.SetActive(true);
         }
 
+        animator.Play("Enable");
         isDamaged=true;
-        nameText.text = name;
-        remainHpText.text =  $"{remainHp}";
+        nameText.text = livingEntity.MonsterName;
+        remainHpText.text =  $"{livingEntity.RemainHp}";
         StartCoroutine(FadeOutPanel());
     }
 

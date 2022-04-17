@@ -588,9 +588,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceb447207ddcc5841827fbef8d3845ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  material: {fileID: 2100000, guid: da5f942c23672714ea37c167fca84f54, type: 2}
+  exp: 0
   flickerMaterial: {fileID: 2100000, guid: 28a0ec0f3d6151d499ba65a25763debb, type: 2}
-  meshRenderer: {fileID: 0}
   missilePrefab: {fileID: 1382443887350556, guid: e974b44c2c17c4c4b93de8b29ee39ca4, type: 3}
   BeamShooter: {fileID: 8813747311213928897}
   pillarBlastPrefab: {fileID: 183926, guid: 96d8221c1bb8b404fb8cd7080f372017, type: 3}
@@ -607,6 +606,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c18c9a46b05aad499c02c1f1d0e1826, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exp: 0
+  flickerMaterial: {fileID: 0}
 --- !u!114 &8813747309572654784
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -66,7 +66,7 @@ public class Inventory : MonoBehaviour, IDragHandler, IPointerDownHandler
         }
     }
 
-    private void OpenInventory()
+    public void OpenInventory()
     {
         this.gameObject.SetActive(!this.gameObject.activeSelf);
     }
