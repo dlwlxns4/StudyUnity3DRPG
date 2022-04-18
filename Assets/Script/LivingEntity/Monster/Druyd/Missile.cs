@@ -24,7 +24,6 @@ public class Missile : MonoBehaviour
 
     void OnCollisionEnter(Collision other) 
     {
-        Debug.Log(other.gameObject.name);
         Instantiate(boomParticle, this.transform.position, Quaternion.identity);
         Destroy(this.gameObject);
     }

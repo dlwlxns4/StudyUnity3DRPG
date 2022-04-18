@@ -16670,7 +16670,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5201766437341952273, guid: b52b9160b4e9bdb4b92e886fa07cffc2, type: 3}
       propertyPath: sceneNumber
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5201766437341952273, guid: b52b9160b4e9bdb4b92e886fa07cffc2, type: 3}
       propertyPath: movePosition.x

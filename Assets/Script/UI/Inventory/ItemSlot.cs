@@ -24,6 +24,9 @@ public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     {
         itemImage.sprite = itemData.GetItemData.ItemImage;
         this.itemData = itemData;
+        Color color = itemImage.color;
+        color.a = 1f;
+        itemImage.color = color;
         IncreaseCount();
     }
 
@@ -44,6 +47,9 @@ public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         CountText.text = "";
         itemData=null;
         itemImage.sprite=null;
+        Color color = itemImage.color;
+        color.a = 0f;
+        itemImage.color = color;
     }
 
     public void OnBeginDrag(PointerEventData eventData)

@@ -11,7 +11,6 @@ public class AttackState : StateMachineBehaviour
         attackable = animator.GetComponent<IAttackable>();
         animator.GetComponent<NavMeshAgent>().isStopped =true;
         animator.GetComponent<NavMeshAgent>().velocity = Vector3.zero;
-        animator.SetBool("IsAttack",false);
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -22,6 +21,7 @@ public class AttackState : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.GetComponent<NavMeshAgent>().isStopped =false;
+        attackable.AttackExit();
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

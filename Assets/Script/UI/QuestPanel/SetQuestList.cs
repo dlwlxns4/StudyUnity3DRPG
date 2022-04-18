@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using TMPro;
 
 public class SetQuestList : MonoBehaviour
 {
@@ -17,9 +18,9 @@ public class SetQuestList : MonoBehaviour
     [SerializeField]
     private GameObject informationPanel;
     [SerializeField]
-    private Text questDescriptionText;
+    private TextMeshProUGUI questDescriptionText;
     [SerializeField]
-    private Text questGoalText;
+    private TextMeshProUGUI questGoalText;
     private List<GameObject> questsList = new List<GameObject>();
 
     public Quest currSelectQuest{get;set;}

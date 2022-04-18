@@ -38,7 +38,7 @@ public class Shop : MonoBehaviour
         foreach(var item in saleItemList)
         {
             GameObject itemList = Instantiate(itemListPrefab, Vector3.zero, Quaternion.identity);
-            itemList.GetComponent<SaleItemList>().SetItemImage(item.GetItemData.ItemImage);
+            itemList.GetComponent<SaleItemList>().SetItemImage(item);
             itemList.GetComponent<SaleItemList>().itemData = item;
             itemList.GetComponent<SaleItemList>().Init(selectPanel);
             itemList.transform.SetParent(gridLayout.transform, false);

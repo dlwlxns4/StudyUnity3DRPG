@@ -6,4 +6,5 @@ public interface IAttackable
 {
     public void AttackReady();
     public void Attack();
+    public void AttackExit();
 }

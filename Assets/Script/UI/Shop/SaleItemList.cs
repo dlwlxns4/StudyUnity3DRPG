@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
 
 public class SaleItemList : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
@@ -10,6 +11,7 @@ public class SaleItemList : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     Image panelImage;
     Color cacheColor;
     GameObject selectPanel;
+    TextMeshProUGUI priceText;
 
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -33,9 +35,10 @@ public class SaleItemList : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         this.selectPanel = selectPanel;
     }
 
-    public void SetItemImage(Sprite sprite)
+    public void SetItemImage(Item item)
     {
-        itemImage.sprite = sprite;
+        itemImage.sprite = item.GetItemData.ItemImage;
+        GetComponentInChildren<TextMeshProUGUI>().text = $"{item.GetItemData.BuyPrice}";
     }
 
     public void BuyItem()

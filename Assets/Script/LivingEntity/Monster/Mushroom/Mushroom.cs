@@ -114,28 +114,46 @@ public class Mushroom : LivingEntity, IMovable, IAttackable
     {
         navMesh.velocity = Vector3.zero;
         attackDelay+=Time.deltaTime;
-        if(attackDelay>=1f)
+        if(attackDelay<=0.3f)
         {
+            Vector3 rotate = new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z);
+            this.transform.LookAt(rotate);
+        }
+        
+        if(attackDelay >=0.5f)
+        {
+            attackDelay=0;
             animator.SetBool("IsAttack", true);
             animator.SetBool("IsReady", false);
-            attackDelay=0;
         }
     }
 
     public void Attack()
     {
         navMesh.velocity = Vector3.zero;
-        if(Vector3.Distance(target.transform.position, this.transform.position)<=1.1f)
+        
+        attackDelay+=Time.deltaTime;
+        if(attackDelay>=2f)
         {
-            animator.SetBool("IsReady", true);
+            attackDelay=0;
+            animator.SetBool("IsAttack",false);
+            if(Vector3.Distance(target.transform.position, this.transform.position)<=1.1f)
+            {
+                animator.SetBool("IsReady", true);
+            }
+            else if(Vector3.Distance(target.transform.position, this.transform.position)<=4f)
+            {
+                animator.SetBool("IsFollow", true);
+            }
+            else
+            {
+                animator.SetBool("IsBack", true);
+            }
         }
-        else if(Vector3.Distance(target.transform.position, this.transform.position)<=4f)
-        {
-            animator.SetBool("IsFollow", true);
-        }
-        else
-        {
-            animator.SetBool("IsBack", true);
-        }
+    }
+
+    public void AttackExit()
+    {
+        return;
     }
 }
