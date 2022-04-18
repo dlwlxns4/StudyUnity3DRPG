@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Dialogue1
   m_EditorClassIdentifier: 
   firstNode: {fileID: 11400000, guid: 6b91b95263099b747bc6f574dd7055e6, type: 2}
+  portrait: {fileID: 21300000, guid: 5e482ff5218b93042975950f129f3e88, type: 3}

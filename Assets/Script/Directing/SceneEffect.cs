@@ -12,8 +12,7 @@ public class SceneEffect : MonoBehaviour
     {
         fadeInOutImage = GetComponent<Image>();
         // screenDirecting;
-
-        StartCoroutine(FadeInScreen());
+        // StartCoroutine(FadeInScreen());
     }
 
     public void FadeOut()
@@ -41,9 +40,10 @@ public class SceneEffect : MonoBehaviour
         imageColor.a = 1.0f;
         while(fadeInOutImage.color.a >=0f)
         {
-            imageColor.a -= 0.1f;
+            imageColor.a -= 0.05f;
             fadeInOutImage.color = imageColor;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.05f);
         }
+        this.gameObject.SetActive(false);
     }
 }

@@ -28,12 +28,13 @@ public class Portal : MonoBehaviour
     
     IEnumerator FadeOut()
     {
+        image.gameObject.SetActive(true);
         Color opacity = image.color;
         while(opacity.a <=1f)
         {
-            opacity.a += 0.1f;
+            opacity.a += 0.05f;
             image.color= opacity;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.05f);
         }
         
         SceneManager.LoadScene(sceneNumber);

@@ -23,6 +23,7 @@ public class FollowCamEffector : MonoBehaviour
     void OnDestroy()
     {
         CameraChannel.OnshakeCamera -= ShakeCamera;
+        CameraChannel.OnFollowPlayer -= FollowPlayer;
     }
 
     void ShakeCamera()
