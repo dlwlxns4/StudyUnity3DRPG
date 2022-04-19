@@ -74,7 +74,6 @@ public class Inventory : MonoBehaviour, IDragHandler, IPointerDownHandler
     private void AcquireCoin(int coin)
     {
         gold += coin;
-        Debug.Log(coin);
         goldText.text = $"Gold : {gold}";
     }
 

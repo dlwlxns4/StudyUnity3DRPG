@@ -83,7 +83,6 @@ public class Druyd : LivingEntity, IAttackable, IMovable, IBasicAttack, IAoeAtta
         int count=0;
         Vector3 rotation = new Vector3(-90,0,0);
         
-        
         attackDelay += Time.deltaTime;
         for(int i=0; i<3; ++i)
         {

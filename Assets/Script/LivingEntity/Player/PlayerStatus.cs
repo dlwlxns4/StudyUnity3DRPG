@@ -48,6 +48,7 @@ public class PlayerStatus : MonoBehaviour
         if(currExp >= requiredExp)
         {
             LevelUp();
+            PlayerChannel.RaiseGetExpEvent(0);
         }
     }
     

@@ -52,7 +52,6 @@ public class PlayerInteract : MonoBehaviour
         if(interactable != null)
         {
             nearByInteractableObj.Remove(interactable);
-
             if(nearByInteractableObj.Count == 0 )
             {
                 interactInfoPanel.GetComponent<InteractPanel>().DisableAnimation(null);

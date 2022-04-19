@@ -39,6 +39,7 @@ public abstract class LivingEntity : MonoBehaviour
         {
             GetComponent<Animator>().SetBool("IsDie", true);
             Die();
+            Debug.Log("EXP!" + exp);
             PlayerChannel.RaiseGetExpEvent(exp);
             this.GetComponent<ItemDropable>()?.DropItem();
         }
