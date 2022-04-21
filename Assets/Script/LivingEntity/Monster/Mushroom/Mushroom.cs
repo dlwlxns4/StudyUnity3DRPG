@@ -126,6 +126,12 @@ public class Mushroom : LivingEntity, IMovable, IAttackable
             animator.SetBool("IsAttack", true);
             animator.SetBool("IsReady", false);
         }
+
+        if(Vector3.Distance(transform.position, target.transform.position) <= 1.5f)
+        {
+            animator.SetBool("IsReady",false);
+            animator.SetBool("IsFollow", true);
+        }
     }
 
     public void Attack()
