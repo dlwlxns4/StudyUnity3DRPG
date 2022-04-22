@@ -68,6 +68,8 @@ public class PlayerInteract : MonoBehaviour
                 return ;
             }
             nearByInteractableObj[0].DoInteraction();
+            interactInfoPanel.GetComponent<InteractPanel>().DisableAnimation(null);
+
             ClearNearObj();
         }
     }

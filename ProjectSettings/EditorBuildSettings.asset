@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scene/TopMountain.unity
     guid: 3b1efa68c720dd84fa796617b09a6162
+  - enabled: 1
+    path: Assets/Scene/TotheTown.unity
+    guid: 6990ca160d35e5945989da1cbacaab22
   m_configObjects: {}
