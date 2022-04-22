@@ -35,6 +35,8 @@ public class PlayerStatus : MonoBehaviour
     [SerializeField]
     public UnityEvent<int,int> levlUpEvent;
 
+    public enum PlayerState{Hp, Mp, Strength, Level}
+
     private void Awake() 
     {
         Level=1;
@@ -88,5 +90,26 @@ public class PlayerStatus : MonoBehaviour
         RemainMp+=2;
         UIChannel.RaiseSetMpState(0);
         levlUpEvent.Invoke(Level, AbilityPoint);
+    }
+
+    void UseStatusItem(PlayerState status, int count)
+    {
+        switch(status)
+        {
+            case PlayerState.Hp:
+            remainHp+=count;
+            if(remainHp>=maxHp)
+            {
+                remainHp =maxHp;
+            }
+            break;
+            case PlayerState.Mp:
+            remainMp+=count;
+            if(remainMp>=maxMp)
+            {
+                remainMp =maxMp;
+            }
+            break;
+        }
     }
 }
