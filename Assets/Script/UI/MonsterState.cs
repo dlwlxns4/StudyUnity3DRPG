@@ -2,51 +2,86 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class MonsterState : MonoBehaviour
 {
-    public Text nameText;
-    public Text remainHpText;
+    public enum EnemyState{Normal, Boss};
+    EnemyState enemyState;
+    public Image normalHpImage;
+    public Text normalNameText;
+    public Text normalRemainHpText;
+    public Animator normalAnimator;
+    public Image bossHpImage;
+    public TextMeshProUGUI bossNameText;
+    public TextMeshProUGUI bossRemainHpText;
+    public Animator bossAnimator;
 
     public delegate void SetMonsterState();
     public SetMonsterState setMonsterState; 
 
     public bool isDamaged=false;
 
-    Animator animator;
     LivingEntity LivingEntity;
 
     void Awake()
     {
-        animator = GetComponent<Animator>();
         UIChannel.OnSetMonsterState += SetState;
-        this.gameObject.SetActive(false);
+        UIChannel.OnBossAnimatorEvent += RaiseBossFillAmountAnime;
+        normalHpImage.transform.parent.gameObject.SetActive(false);
+        bossHpImage.transform.parent.gameObject.SetActive(false);
     }
 
-    private void OnDestroy() {
+    private void OnDestroy() 
+    {
         UIChannel.OnSetMonsterState -= SetState;
     }
 
     private void OnEnable() 
     {
-        animator.Play("Enable");
+        normalAnimator.Play("Enable");
     }
 
-    private void SetState(LivingEntity livingEntity)
+    private void SetState(LivingEntity livingEntity, bool isBoss)
     {
         if(this.LivingEntity != livingEntity)
         {
         }
-        if(this.gameObject.activeSelf == false)
+        Debug.Log(isBoss);
+
+        switch(isBoss)
         {
-            this.gameObject.SetActive(true);
+            case false:
+            SetNormalEnemyState(livingEntity);
+            break;
+            case true:
+            SetBossEnemyState(livingEntity);
+            break;           
+        }
+    }
+
+    void SetNormalEnemyState(LivingEntity livingEntity)
+    {
+        if(normalHpImage.transform.parent.gameObject.activeSelf == false)
+        {
+            normalHpImage.transform.parent.gameObject.SetActive(true);
         }
 
-        animator.Play("Enable");
+        normalAnimator.Play("Enable");
         isDamaged=true;
-        nameText.text = livingEntity.MonsterName;
-        remainHpText.text =  $"{livingEntity.RemainHp}";
+        normalNameText.text = livingEntity.MonsterName;
+        normalRemainHpText.text =  $"{livingEntity.RemainHp}";
+        normalHpImage.fillAmount = livingEntity.RemainHp/(float)livingEntity.MaxHp;
+        StopCoroutine(FadeOutPanel());
         StartCoroutine(FadeOutPanel());
+    }
+
+    void SetBossEnemyState(LivingEntity livingEntity)
+    {
+        isDamaged=true;
+        bossNameText.text = livingEntity.MonsterName;
+        bossRemainHpText.text =  $"{livingEntity.RemainHp}";
+        bossHpImage.fillAmount = livingEntity.RemainHp/(float)livingEntity.MaxHp;
     }
 
     IEnumerator FadeOutPanel()
@@ -56,7 +91,26 @@ public class MonsterState : MonoBehaviour
 
         if(isDamaged==false)
         {
-            this.gameObject.SetActive(false);
+            normalHpImage.transform.parent.gameObject.SetActive(false);
+        }
+    }
+
+    void RaiseBossFillAmountAnime(LivingEntity living)
+    {
+        StartCoroutine(BossAniamtor(living));
+    }
+
+    IEnumerator BossAniamtor(LivingEntity livingEntity)
+    {
+        float fillAmount = bossHpImage.fillAmount;
+        bossHpImage.transform.parent.gameObject.SetActive(true);
+        bossNameText.text = livingEntity.MonsterName;
+        bossRemainHpText.text =  $"{livingEntity.RemainHp}";
+        while(bossHpImage.fillAmount<1f)
+        {
+            fillAmount +=0.05f;
+            bossHpImage.fillAmount = fillAmount;
+            yield return new WaitForSeconds(0.01f);
         }
     }
 }

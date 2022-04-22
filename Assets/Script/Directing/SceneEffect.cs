@@ -11,7 +11,6 @@ public class SceneEffect : MonoBehaviour
     void Start()
     {
         fadeInOutImage = GetComponent<Image>();
-        gameObject.SetActive(false);
         StartCoroutine(FadeInScreen());
     }
 

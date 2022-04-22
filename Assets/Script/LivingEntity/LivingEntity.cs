@@ -18,6 +18,8 @@ public abstract class LivingEntity : MonoBehaviour
     [SerializeField]
     protected Material flickerMaterial;
     private SkinnedMeshRenderer meshRenderer;
+    [SerializeField]
+    bool isBoss;
 
     private void Awake() 
     {
@@ -33,7 +35,10 @@ public abstract class LivingEntity : MonoBehaviour
         }
 
         RemainHp -= damagedFigure;
-        UIChannel.RaiseSetMonsterState(this);
+        
+        UIChannel.RaiseSetMonsterState(this, isBoss);
+        
+        
         StartCoroutine(MaterialFlicker());
         if(RemainHp <= 0 )
         {

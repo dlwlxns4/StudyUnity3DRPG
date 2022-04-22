@@ -22,12 +22,12 @@ public class Druyd : LivingEntity, IAttackable, IMovable, IBasicAttack, IAoeAtta
     AttackState attackState;
     bool isShoot=false;
     int shootCount=0;
-
+    GameObject portalPrefab;
     void Start()
     {
         MaxHp=100;
         RemainHp=100;
-        MonsterName = "페어리";
+        MonsterName = "드라이어드";
         ObjectId=2;
         animator = GetComponent<Animator>();
         IsDead=false;
@@ -51,7 +51,7 @@ public class Druyd : LivingEntity, IAttackable, IMovable, IBasicAttack, IAoeAtta
             {
                 attackDelay=0;
                 isShoot=false;
-                if(shootCount==3)
+                if(shootCount==2)
                 {
                     shootCount=0;
                     animator.SetBool("IsFollow", true);

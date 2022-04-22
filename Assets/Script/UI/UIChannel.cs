@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "ScriptableObjects/UI/UIChannel")]
 public class UIChannel : ScriptableObject
 {
-    public delegate void SetMonsterState(LivingEntity livingEntity);
+    public delegate void SetMonsterState(LivingEntity livingEntity, bool isBoss);
     public static SetMonsterState OnSetMonsterState;
 
     public delegate void SetQuestOnUI(string questName);
@@ -28,15 +28,17 @@ public class UIChannel : ScriptableObject
     public static OpenShopEvent openStatus;
     public delegate void SetQuickSlotEvent(Vector3 pointer, ItemSlot itemSlot);
     public static SetQuickSlotEvent OnSetQuickSlot;
+    public delegate void BossAniamtorEvent(LivingEntity livingEntity);
+    public static BossAniamtorEvent OnBossAnimatorEvent;
 
     public static void RaiseOpenShop()
     {
         openShop?.Invoke();
     }
     
-    public static void RaiseSetMonsterState(LivingEntity livingEntity)
+    public static void RaiseSetMonsterState(LivingEntity livingEntity, bool isBoss)
     {
-        OnSetMonsterState?.Invoke(livingEntity);
+        OnSetMonsterState?.Invoke(livingEntity, isBoss);
     }
 
     public static void RaiseSetQuestOnUI(string questName)
@@ -83,4 +85,9 @@ public class UIChannel : ScriptableObject
     {
         openStatus?.Invoke();
     } 
+
+    public static void RaiseBossStateAnimator(LivingEntity livingEntity)
+    {
+        OnBossAnimatorEvent?.Invoke(livingEntity);
+    }
 }
