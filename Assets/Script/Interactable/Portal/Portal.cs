@@ -26,6 +26,14 @@ public class Portal : MonoBehaviour
         image = GameObject.FindGameObjectWithTag("Canvas").transform.Find("FadePanel").GetComponent<Image>();
     }
     
+    public void Init(Vector3 destination, int sceneNum)
+    {
+        movePosition= destination;
+        sceneNumber = sceneNum;
+        player = GameObject.FindWithTag("Player");
+        image = GameObject.FindGameObjectWithTag("Canvas").transform.Find("FadePanel").GetComponent<Image>();
+    }
+
     IEnumerator FadeOut()
     {
         image.gameObject.SetActive(true);

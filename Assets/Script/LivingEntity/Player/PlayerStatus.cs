@@ -10,7 +10,7 @@ public class PlayerStatus : MonoBehaviour
     public int MaxHp{ get{return maxHp;}  set{maxHp=value;} }
     [SerializeField]
     private int remainHp;
-    public int RemainHp{get;set;}
+    public int RemainHp{get{return remainHp;}set{remainHp=value;}}
     [SerializeField]
     private int maxMp;
     public int MaxMp{ get{return maxMp;} set{maxMp = value;} }
@@ -41,6 +41,8 @@ public class PlayerStatus : MonoBehaviour
     {
         Level=1;
         requiredExp=10;   
+        maxHp=20;
+        remainHp=20;
         PlayerChannel.OnGetExpEvent += GetExp;     
         PlayerChannel.OnUseItem += UseStatusItem;
     }
@@ -88,7 +90,7 @@ public class PlayerStatus : MonoBehaviour
     {
         AbilityPoint--;
         maxMp+=2;
-        RemainMp+=2;
+        RemainHp+=2;
         UIChannel.RaiseSetMpState(0);
         levlUpEvent.Invoke(Level, AbilityPoint);
     }

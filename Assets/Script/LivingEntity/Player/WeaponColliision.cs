@@ -9,10 +9,13 @@ public class WeaponColliision : MonoBehaviour
     private PlayerAttack playerAttack; 
     [SerializeField]
     private GameObject hitParticlePrefab;
+    [SerializeField]
+    AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter(Collider other) 
@@ -22,6 +25,7 @@ public class WeaponColliision : MonoBehaviour
 
         if(other.tag == "Enemy")
         {
+            audioSource.Play();
             Instantiate(hitParticlePrefab, (other.transform.position+this.transform.position)/2, Quaternion.identity);
             other.GetComponent<LivingEntity>()?.OnDamaged(damageFigure);
             CameraChannel.RaiseShakeCamera();

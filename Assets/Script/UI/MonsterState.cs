@@ -47,7 +47,6 @@ public class MonsterState : MonoBehaviour
         if(this.LivingEntity != livingEntity)
         {
         }
-        Debug.Log(isBoss);
 
         switch(isBoss)
         {
@@ -84,6 +83,11 @@ public class MonsterState : MonoBehaviour
         bossHpImage.fillAmount = livingEntity.RemainHp/(float)livingEntity.MaxHp;
     }
 
+    IEnumerator ActiveBossUI()
+    {
+        yield return new WaitForSeconds(3f);
+        bossHpImage.transform.parent.gameObject.SetActive(false);
+    }
     IEnumerator FadeOutPanel()
     {
         isDamaged=false;

@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] 
     float moveSpeed = 4f;
+    [SerializeField]
 
     public delegate void CanMoveEvent();
     public CanMoveEvent attackEndEvent;

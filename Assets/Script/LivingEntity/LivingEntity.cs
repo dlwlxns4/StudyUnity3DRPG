@@ -6,7 +6,7 @@ public abstract class LivingEntity : MonoBehaviour
 {
     public int MaxHp{get;set;}
     public int RemainHp{get;set;}
-    public int Strength{get;set;}
+    public int Strength;
     public bool IsDead{get;set;}
     public string MonsterName{get;set;}
     public int ObjectId{get;set;}
@@ -53,6 +53,7 @@ public abstract class LivingEntity : MonoBehaviour
     public virtual void Die()
     {
         CombatChannel.RaiseEnemyDiedEvent(this);
+        IsDead=true;
     }
 
     public virtual IEnumerator DieEffect()

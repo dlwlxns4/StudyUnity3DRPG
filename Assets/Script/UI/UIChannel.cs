@@ -18,6 +18,10 @@ public class UIChannel : ScriptableObject
     public static SpendMpEvent OnSpendMp;
     public delegate void FillMpEvent(int fillMp);
     public static FillMpEvent OnFillMp;
+    public delegate void SpendHpEvent(int spendHp);
+    public static SpendHpEvent OnSpendHp;
+    public delegate void FillHpEvent(int fillHp);
+    public static FillHpEvent OnFillHp;
     public delegate void SetInvenEvent();
     public static SetInvenEvent OnSetInven;
     public delegate void GetUseItemEvent(Item item, bool isGet);
@@ -65,7 +69,17 @@ public class UIChannel : ScriptableObject
 
     public static void RaiseFillMpState(int fillMp)
     {
-        OnFillMp?.Invoke(fillMp);
+        OnFillHp?.Invoke(fillMp);
+    }
+
+        public static void RaiseSetHpState(int spendHp)
+    {
+        OnSpendHp?.Invoke(spendHp);
+    }
+
+    public static void RaiseFillHpState(int fillHp)
+    {
+        OnFillHp?.Invoke(fillHp);
     }
 
     public static void RaiseSetInven()

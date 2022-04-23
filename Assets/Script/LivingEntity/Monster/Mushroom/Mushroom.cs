@@ -19,6 +19,7 @@ public class Mushroom : LivingEntity, IMovable, IAttackable
         RemainHp=30;
         MonsterName = "머쉬룸";
         ObjectId=1;
+        Strength=1;
         animator = GetComponent<Animator>();
         IsDead=false;
     }
@@ -78,7 +79,7 @@ public class Mushroom : LivingEntity, IMovable, IAttackable
     {
         navMesh.SetDestination(target.transform.position);
 
-        if(Vector3.Distance(this.transform.position, target.transform.position) < 1.5f )
+        if(Vector3.Distance(this.transform.position, target.transform.position) < 1f )
         {
             animator.SetBool("IsReady", true);
             animator.SetBool("IsFollow",false);

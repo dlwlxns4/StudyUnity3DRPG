@@ -16,6 +16,7 @@ public class PlayerAttack : MonoBehaviour
     private Rigidbody playerRigidBody;
 
     private WeaponColliision weaponColliision;
+    AudioSource audioSource;
 
 
     // Start is called before the first frame update
@@ -26,6 +27,7 @@ public class PlayerAttack : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
         playerRigidBody = GetComponent<Rigidbody>();
         weaponColliision = GetComponentInChildren<WeaponColliision>();
+        audioSource = GetComponent<AudioSource>();
 
         playerInput.attackInput = false;
     }
@@ -128,5 +130,10 @@ public class PlayerAttack : MonoBehaviour
     private void AttackReboundReset()
     {
         playerRigidBody.velocity = Vector3.zero;
+    }
+
+    public void SoundPlay()
+    {
+        audioSource.Play();
     }
 }

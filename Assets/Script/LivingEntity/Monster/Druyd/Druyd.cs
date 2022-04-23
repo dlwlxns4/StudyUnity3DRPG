@@ -22,6 +22,7 @@ public class Druyd : LivingEntity, IAttackable, IMovable, IBasicAttack, IAoeAtta
     AttackState attackState;
     bool isShoot=false;
     int shootCount=0;
+    [SerializeField]
     GameObject portalPrefab;
     void Start()
     {
@@ -31,6 +32,7 @@ public class Druyd : LivingEntity, IAttackable, IMovable, IBasicAttack, IAoeAtta
         ObjectId=2;
         animator = GetComponent<Animator>();
         IsDead=false;
+        Strength=5;
         target = GameObject.FindGameObjectWithTag("Player").transform;
         navMesh = GetComponent<NavMeshAgent>();
     }
@@ -40,36 +42,29 @@ public class Druyd : LivingEntity, IAttackable, IMovable, IBasicAttack, IAoeAtta
         base.OnDamaged(damagedFigure);
     }
 
+    public override void Die()
+    {
+        base.Die();
+        UIChannel.RaiseSetMonsterState(this, true);
+    }
+
     void DoBeamAttack()
     {
         Vector3 rotate = new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z);
         this.transform.LookAt(rotate);
-        attackDelay += Time.deltaTime;
-        if(isShoot)
-        {  
-            if(attackDelay >= 1.04f)
-            {
-                attackDelay=0;
-                isShoot=false;
-                if(shootCount==2)
-                {
-                    shootCount=0;
-                    animator.SetBool("IsFollow", true);
-                }
-            }     
-            return;
-        }    
+    }
 
-        if(!isShoot)
+    public void CheckBeamCount()
+    {
+        
+        GameObject missile = Instantiate(missilePrefab, BeamShooter.transform.position, Quaternion.identity);
+        missile.GetComponent<Missile>().Init(target.position);
+        shootCount++;
+        
+        if(shootCount == 3)
         {
-            if(attackDelay >= 0.2f)
-            {
-                isShoot=true;
-                GameObject missile = Instantiate(missilePrefab, BeamShooter.transform.position, Quaternion.identity);
-                missile.GetComponent<Missile>().Init(target.position);
-                attackDelay=0;
-                shootCount++;
-            }
+            shootCount=0;
+            animator.SetBool("IsFollow", true);
         }
     }
 
@@ -157,6 +152,8 @@ public class Druyd : LivingEntity, IAttackable, IMovable, IBasicAttack, IAoeAtta
 
     void IAttackable.AttackReady()
     {
+        Vector3 rotate = new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z);
+        this.transform.LookAt(rotate);
         attackDelay += Time.deltaTime;
         if(attackDelay>=1f)
         {
@@ -194,5 +191,12 @@ public class Druyd : LivingEntity, IAttackable, IMovable, IBasicAttack, IAoeAtta
         animator.SetBool("IsBeamAttack", false);
         animator.SetBool("IsAoeAttack", false);
         return;
+    }
+
+
+    public void CreatePortal()
+    {
+        GameObject portal = Instantiate(portalPrefab, new Vector3(1.1f, 6.8f, 17f), Quaternion.identity);
+        portal.GetComponent<Portal>().Init(new Vector3(0,5f,0), 0);
     }
 }
