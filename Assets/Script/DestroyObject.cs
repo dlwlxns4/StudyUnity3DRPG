@@ -10,6 +10,4 @@ public class DestroyObject : MonoBehaviour
     {
         Destroy(this.gameObject, destroyDelay);
     }
-
-    
 }

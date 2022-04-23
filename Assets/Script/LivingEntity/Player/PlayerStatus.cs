@@ -42,6 +42,7 @@ public class PlayerStatus : MonoBehaviour
         Level=1;
         requiredExp=10;   
         PlayerChannel.OnGetExpEvent += GetExp;     
+        PlayerChannel.OnUseItem += UseStatusItem;
     }
 
     public void GetExp(int exp)
@@ -104,11 +105,7 @@ public class PlayerStatus : MonoBehaviour
             }
             break;
             case PlayerState.Mp:
-            remainMp+=count;
-            if(remainMp>=maxMp)
-            {
-                remainMp =maxMp;
-            }
+            UIChannel.RaiseFillMpState(count);
             break;
         }
     }

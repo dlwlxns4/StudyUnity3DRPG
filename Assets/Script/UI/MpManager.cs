@@ -18,6 +18,7 @@ public class MpManager : MonoBehaviour
         mpImage = GetComponent<Image>();
         mpText = GetComponentInChildren<Text>();
         UIChannel.OnSpendMp += SpendMp;
+        UIChannel.OnFillMp += FillMp;
         effectMp = playerStatus.MaxMp;
         MpRecoveryDelay = 1;
     }
@@ -60,6 +61,19 @@ public class MpManager : MonoBehaviour
         }
         mpText.text = $"{playerStatus.RemainMp}";
         StartCoroutine(SpendMpEffect());
+    }
+
+    void FillMp(int fillMp)
+    {
+        effectMp =playerStatus.RemainMp;
+        playerStatus.RemainMp += fillMp;
+        if(playerStatus.RemainMp>=playerStatus.MaxMp)
+        {
+            playerStatus.RemainMp = playerStatus.MaxMp;
+        }
+
+        mpText.text = $"{playerStatus.RemainMp}";
+        StartCoroutine(FillMpEffect());
     }
 
     IEnumerator SpendMpEffect()

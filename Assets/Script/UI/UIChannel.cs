@@ -16,6 +16,8 @@ public class UIChannel : ScriptableObject
     public static SetQuestInformation OnSetQuestInformation;
     public delegate void SpendMpEvent(int spendMp);
     public static SpendMpEvent OnSpendMp;
+    public delegate void FillMpEvent(int fillMp);
+    public static FillMpEvent OnFillMp;
     public delegate void SetInvenEvent();
     public static SetInvenEvent OnSetInven;
     public delegate void GetUseItemEvent(Item item, bool isGet);
@@ -59,6 +61,11 @@ public class UIChannel : ScriptableObject
     public static void RaiseSetMpState(int spendMp)
     {
         OnSpendMp?.Invoke(spendMp);
+    }
+
+    public static void RaiseFillMpState(int fillMp)
+    {
+        OnFillMp?.Invoke(fillMp);
     }
 
     public static void RaiseSetInven()
