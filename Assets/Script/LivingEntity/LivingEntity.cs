@@ -76,7 +76,6 @@ public abstract class LivingEntity : MonoBehaviour
 
     IEnumerator MaterialFlicker()
     {
-        cacheMaterial = meshRenderer.material;
         meshRenderer.material = flickerMaterial;
         yield return new WaitForSeconds(0.05f);
         meshRenderer.material = cacheMaterial;

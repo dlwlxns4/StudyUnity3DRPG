@@ -24,6 +24,7 @@ public class ActiveDruydCondition : ConditionBoundary
         yield return new WaitForSeconds(0.5f);
         UIChannel.RaiseBossStateAnimator(Druyd.GetComponent<LivingEntity>());
         Druyd.GetComponent<Animator>().SetBool("IsFollow", true);
+        SoundManager.Instance.ClipChange(SoundManager.Instance.bossSound);
         Destroy(this.transform.parent.gameObject);
     }
 }

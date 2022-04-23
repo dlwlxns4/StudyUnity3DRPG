@@ -14,6 +14,8 @@ public class Portal : MonoBehaviour
     private Vector3 movePosition;
     [SerializeField]
     Image image;
+    [SerializeField]
+    AudioClip backgroundClip;
 
     public void DoPortal()
     {
@@ -30,6 +32,15 @@ public class Portal : MonoBehaviour
     {
         movePosition= destination;
         sceneNumber = sceneNum;
+        player = GameObject.FindWithTag("Player");
+        image = GameObject.FindGameObjectWithTag("Canvas").transform.Find("FadePanel").GetComponent<Image>();
+    }
+
+        public void Init(Vector3 destination, int sceneNum, AudioClip backGroundClip)
+    {
+        movePosition= destination;
+        sceneNumber = sceneNum;
+        this.backgroundClip = backgroundClip;
         player = GameObject.FindWithTag("Player");
         image = GameObject.FindGameObjectWithTag("Canvas").transform.Find("FadePanel").GetComponent<Image>();
     }
