@@ -11866,6 +11866,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7251042816922853547, guid: 7ad7331be5d95874e9bb163d925fb2c3, type: 3}
+      propertyPath: exp
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7251042816922853547, guid: 7ad7331be5d95874e9bb163d925fb2c3, type: 3}
       propertyPath: portalPrefab
       value: 
       objectReference: {fileID: 1917349280850880683, guid: b9110cedc50c9d449af60d00f73b839e, type: 3}

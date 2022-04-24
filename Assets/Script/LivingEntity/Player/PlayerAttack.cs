@@ -117,6 +117,7 @@ public class PlayerAttack : MonoBehaviour
 
     public void ResetOnlyComboStepAndComboPossible()
     {
+        weaponColliision.CanDamage = false;
         isComboPossible = false;
         comboStep = 0;
     }

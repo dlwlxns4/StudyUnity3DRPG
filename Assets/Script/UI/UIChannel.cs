@@ -69,7 +69,7 @@ public class UIChannel : ScriptableObject
 
     public static void RaiseFillMpState(int fillMp)
     {
-        OnFillHp?.Invoke(fillMp);
+        OnFillMp?.Invoke(fillMp);
     }
 
         public static void RaiseSetHpState(int spendHp)

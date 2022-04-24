@@ -32,9 +32,11 @@ public class MonsterState : MonoBehaviour
         bossHpImage.transform.parent.gameObject.SetActive(false);
     }
 
+
     private void OnDestroy() 
     {
         UIChannel.OnSetMonsterState -= SetState;
+        UIChannel.OnBossAnimatorEvent -= RaiseBossFillAmountAnime;
     }
 
     private void OnEnable() 
@@ -77,6 +79,10 @@ public class MonsterState : MonoBehaviour
 
     void SetBossEnemyState(LivingEntity livingEntity)
     {
+        if(livingEntity.RemainHp ==0)
+        {
+            StartCoroutine(ActiveBossUI());
+        }
         isDamaged=true;
         bossNameText.text = livingEntity.MonsterName;
         bossRemainHpText.text =  $"{livingEntity.RemainHp}";

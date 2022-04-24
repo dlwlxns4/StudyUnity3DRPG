@@ -43,6 +43,7 @@ public class PlayerStatus : MonoBehaviour
         requiredExp=10;   
         maxHp=20;
         remainHp=20;
+        strength=5;
         PlayerChannel.OnGetExpEvent += GetExp;     
         PlayerChannel.OnUseItem += UseStatusItem;
     }
@@ -67,7 +68,7 @@ public class PlayerStatus : MonoBehaviour
         newPos.y += 0.3f;
         GameObject levelUpParticle = Instantiate(levelUpPrefab, newPos, Quaternion.Euler(rotation));
         levelUpParticle.GetComponent<FollowObject>().target = this.transform;
-        AbilityPoint++;
+        AbilityPoint+=3;
         levlUpEvent.Invoke(Level, AbilityPoint);
     }
 
@@ -77,6 +78,7 @@ public class PlayerStatus : MonoBehaviour
         maxHp +=10;
         remainHp +=10;
         levlUpEvent.Invoke(Level, AbilityPoint);
+        UIChannel.RaiseSetHpState(0);
     }
 
     public void IncreaseStrength()
@@ -90,7 +92,7 @@ public class PlayerStatus : MonoBehaviour
     {
         AbilityPoint--;
         maxMp+=2;
-        RemainHp+=2;
+        RemainMp+=2;
         UIChannel.RaiseSetMpState(0);
         levlUpEvent.Invoke(Level, AbilityPoint);
     }
@@ -100,11 +102,7 @@ public class PlayerStatus : MonoBehaviour
         switch(status)
         {
             case PlayerState.Hp:
-            remainHp+=count;
-            if(remainHp>=maxHp)
-            {
-                remainHp =maxHp;
-            }
+            UIChannel.RaiseFillHpState(count);
             break;
             case PlayerState.Mp:
             UIChannel.RaiseFillMpState(count);

@@ -22,6 +22,11 @@ public class StatuePanel : MonoBehaviour
         UIChannel.openStatus += OpenStatus;
     }
 
+    void OnDestroy()
+    {
+        UIChannel.openStatus -= OpenStatus;
+    }
+
     public void SetLevelAp(int lv, int Ap)
     {
         LvText.text = $"Level. {lv}";

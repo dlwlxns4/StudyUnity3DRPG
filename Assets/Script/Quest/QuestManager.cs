@@ -52,7 +52,7 @@ public class QuestManager : MonoBehaviour
     {   
         // List<QuestObject> questObjList = new List<QuestObject>();
         List<QuestData> questDatasList = new List<QuestData>();
-        questDatasList = questDataList.FindAll( x=> x.questObject.QuestID == latestInteractObjectID
+        questDatasList = questDataList.FindAll( x=> x.questObject.OwnerNpc == latestInteractObjectID
                                                 && x.questObject.CanAcceptStorySequence <= storyProgress);
         questDatasList.RemoveAll(x=> x.isReceiveReward == true);
         // questObjList = questObjectList.FindAll(x => x.QuestID == latestInteractObjectID);

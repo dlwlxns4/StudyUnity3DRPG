@@ -915,6 +915,10 @@ PrefabInstance:
       propertyPath: movePosition.z
       value: 17.85
       objectReference: {fileID: 0}
+    - target: {fileID: 5201766437341952278, guid: b52b9160b4e9bdb4b92e886fa07cffc2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 38e56bf2eab142445b49494feef54492, type: 2}
     - target: {fileID: 5201766437341952299, guid: b52b9160b4e9bdb4b92e886fa07cffc2, type: 3}
       propertyPath: m_Name
       value: Portal (1)
@@ -16871,11 +16875,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5201766437341952272, guid: b52b9160b4e9bdb4b92e886fa07cffc2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1
+      value: 0.46
       objectReference: {fileID: 0}
     - target: {fileID: 5201766437341952272, guid: b52b9160b4e9bdb4b92e886fa07cffc2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3
+      value: 1.23
       objectReference: {fileID: 0}
     - target: {fileID: 5201766437341952272, guid: b52b9160b4e9bdb4b92e886fa07cffc2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -16915,16 +16919,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5201766437341952273, guid: b52b9160b4e9bdb4b92e886fa07cffc2, type: 3}
       propertyPath: movePosition.x
-      value: -2
+      value: -2.7
       objectReference: {fileID: 0}
     - target: {fileID: 5201766437341952273, guid: b52b9160b4e9bdb4b92e886fa07cffc2, type: 3}
       propertyPath: movePosition.y
-      value: 0.5
+      value: 2.8
       objectReference: {fileID: 0}
     - target: {fileID: 5201766437341952273, guid: b52b9160b4e9bdb4b92e886fa07cffc2, type: 3}
       propertyPath: movePosition.z
-      value: 6
+      value: 11.2
       objectReference: {fileID: 0}
+    - target: {fileID: 5201766437341952278, guid: b52b9160b4e9bdb4b92e886fa07cffc2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 13def0b14fabe7840b99516a853854da, type: 2}
     - target: {fileID: 5201766437341952299, guid: b52b9160b4e9bdb4b92e886fa07cffc2, type: 3}
       propertyPath: m_Name
       value: Portal

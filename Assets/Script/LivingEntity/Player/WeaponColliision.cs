@@ -5,7 +5,7 @@ using UnityEngine;
 public class WeaponColliision : MonoBehaviour
 {
     public bool CanDamage{get;set;}
-    private int damageFigure=5;
+    PlayerStatus playerStatus;
     private PlayerAttack playerAttack; 
     [SerializeField]
     private GameObject hitParticlePrefab;
@@ -15,6 +15,7 @@ public class WeaponColliision : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerStatus = GetComponentInParent<PlayerStatus>();
         audioSource = GetComponent<AudioSource>();
     }
 
@@ -27,7 +28,7 @@ public class WeaponColliision : MonoBehaviour
         {
             audioSource.Play();
             Instantiate(hitParticlePrefab, (other.transform.position+this.transform.position)/2, Quaternion.identity);
-            other.GetComponent<LivingEntity>()?.OnDamaged(damageFigure);
+            other.GetComponent<LivingEntity>()?.OnDamaged(playerStatus.Strength);
             CameraChannel.RaiseShakeCamera();
         }    
     }

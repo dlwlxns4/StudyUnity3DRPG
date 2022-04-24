@@ -35,7 +35,12 @@ public abstract class LivingEntity : MonoBehaviour
         }
 
         RemainHp -= damagedFigure;
-        
+        if(RemainHp<=0)
+        {
+            RemainHp=0;
+        }
+
+
         UIChannel.RaiseSetMonsterState(this, isBoss);
         
         

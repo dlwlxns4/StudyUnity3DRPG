@@ -6,6 +6,8 @@ using UnityEngine;
 public class QuestObject : ScriptableObject
 {
     [SerializeField]
+    private int ownerNpc;
+    [SerializeField]
     private int questID;
     [SerializeField]
     string questName;
@@ -21,6 +23,7 @@ public class QuestObject : ScriptableObject
     int canAcceptStorySequence;
 
 
+    public int OwnerNpc => ownerNpc;
     public int QuestID => questID;
     public string QuestName => questName;
     public DialogueNode DialogueNode => dialogueNode;    

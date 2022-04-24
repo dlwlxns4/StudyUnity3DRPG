@@ -47,6 +47,7 @@ public class Druyd : LivingEntity, IAttackable, IMovable, IBasicAttack, IAoeAtta
         base.Die();
         UIChannel.RaiseSetMonsterState(this, true);
         SoundManager.Instance.ClipChange(SoundManager.Instance.jungleSound);
+        this.GetComponent<CapsuleCollider>().enabled = false;
     }
 
     void DoBeamAttack()

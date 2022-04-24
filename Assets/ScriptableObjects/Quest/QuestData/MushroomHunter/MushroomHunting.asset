@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af50aee8c944ce44a9c2f31e9eec4b19, type: 3}
   m_Name: MushroomHunting
   m_EditorClassIdentifier: 
+  ownerNpc: 1
   questID: 1
   questName: "\uBC84\uC12F \uC18C\uD0D5\uC758\uB8B0"
   dialogueNode: {fileID: 11400000, guid: 6f3a84f1aefa2484298f2b6e8cee2b5e, type: 2}

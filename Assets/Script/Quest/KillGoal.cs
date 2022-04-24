@@ -24,7 +24,6 @@ public class KillGoal : QuestGoal
 
     private void OnDestroy() 
     {
-        Debug.Log("삭제!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         CombatChannel.OnEnemyDiedEvent -= EnemyDied;
     }
 
